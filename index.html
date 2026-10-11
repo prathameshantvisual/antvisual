@@ -19,16 +19,7 @@ a{color:inherit}:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;text-decoration:none}
-.brand{display:inline-flex;align-items:flex-end;gap:12px;text-decoration:none;color:var(--ink)}
-.brand-mark{position:relative;display:inline-block;width:34px;height:38px;border-radius:10px;background:var(--ink);overflow:hidden}
-.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:var(--bg);border-radius:2px}
-.brand-mark:before{left:8px;top:6px;width:18px;height:24px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 62%,13% 62%,13% 0);}
-.brand-mark:after{right:7px;top:7px;width:9px;height:22px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0,100% 0,100% 100%,0 100%);}
-.brand-word{display:flex;flex-direction:column;line-height:0.8}
-.brand-word strong{font-size:clamp(15px,2vw,28px);font-weight:700;letter-spacing:-.06em;font-family:'Inter Tight',Inter,sans-serif}
-.brand-word small{font-size:12px;letter-spacing:-.04em;font-weight:600;color:var(--mute);margin-top:2px}
-.flogo{height:56px;width:auto;display:block;margin-bottom:40px}
-@media(prefers-color-scheme:dark){.flogo{filter:invert(1)}}
+.logo img{height:38px;width:auto;display:block}
 .nav nav{display:flex;gap:32px;align-items:center}
 .nav nav a{text-decoration:none;font-size:15px;font-weight:500;color:var(--mute);cursor:pointer;transition:color .15s}
 .nav nav a:hover,.nav nav a.on{color:var(--ink)}
@@ -104,15 +95,7 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
 </head>
 <body>
 <header><div class="w nav">
-  <a class="logo" href="#home" data-go="home" aria-label="AntVisual Designs home">
-    <span class="brand" aria-label="AntVisual Designs">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-word">
-        <strong>AntVisual</strong>
-        <small>Designs.</small>
-      </span>
-    </span>
-  </a>
+  <a class="logo" href="#home" data-go="home" aria-label="AntVisual Designs home"><img src="logo.png" alt="AntVisual Designs"></a>
   <nav>
     <a data-go="home" data-to="work" class="hide">Work</a>
     <a data-go="home" data-to="services" class="hide">Services</a>
