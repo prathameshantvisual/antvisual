@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--soft:#f4f4f2;--ink:#0a0a0a;--mute:#606060;--line:#e3e3e0;--btn:#0a0a0a;--btn-t:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--soft:#161616;--ink:#f2f2f0;--mute:#a0a0a0;--line:#2a2a2a;--btn:#f2f2f0;--btn-t:#0a0a0a}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--soft:#161616;--ink:#f2f2f0;--mute:#a0a0a0;--line:#2a2a2a;--btn:#f2f2f0;--btn-t:#0a0a0a}:root:not([data-theme="light"]) .logo img,:root:not([data-theme="light"]) .cta-logo{filter:invert(1)}}
 :root[data-theme="dark"]{--bg:#0b0b0b;--soft:#161616;--ink:#f2f2f0;--mute:#a0a0a0;--line:#2a2a2a;--btn:#f2f2f0;--btn-t:#0a0a0a}
+:root[data-theme="dark"] .logo img,:root[data-theme="dark"] .cta-logo{filter:invert(1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'Inter Tight',Inter,sans-serif;font-weight:600;letter-spacing:-.025em;margin:0;line-height:1.05}
@@ -26,7 +27,14 @@ header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px s
 .nav .pill{background:var(--btn);color:var(--btn-t)!important;padding:9px 18px;border-radius:99px}
 @media(max-width:720px){.nav nav{gap:16px}.nav nav a{font-size:13.5px}.nav nav a.hide{display:none}}
 .view{display:none}.view.on{display:block}
-.hero{padding:110px 0 56px}
+.hero{padding-top:110px;padding-bottom:56px}.hero.hv{padding-top:40px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.herovid{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#111 0%,#1b1b1b 40%,#101010 100%);border:1px solid var(--line)}
+.herovid video{width:100%;height:100%;object-fit:cover;display:block;background:#111}
+.video-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none;background:linear-gradient(135deg,rgba(17,17,17,.9),rgba(28,28,28,.75));color:#f3f3f0;opacity:0;transition:opacity .2s ease}
+.video-fallback.visible{opacity:1}
+.video-fallback span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.04);font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+@media(max-width:640px){.herovid{border-radius:14px}}
 .hero h1{font-size:clamp(46px,8.4vw,128px);max-width:14ch}
 .hero p{font-size:clamp(18px,1.8vw,22px);color:var(--mute);max-width:52ch;margin:28px 0 0}
 .btn{display:inline-block;background:var(--btn);color:var(--btn-t);padding:15px 28px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--btn);transition:transform .2s}
@@ -107,19 +115,25 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
 
 <main>
 <div class="view on" id="v-home">
-  <div class="w hero">
-    <h1>Good design, run like a business.</h1>
+  <div class="w hero hv">
+    <h1 class="sr-only">Good design, run like a business.</h1>
+    <div class="herovid" id="heroMainWrap">
+      <video id="heroMain" autoplay playsinline loop preload="auto" aria-label="Good design, run like a business. Animated headline">
+        <source src="hero-vid.mp4" type="video/mp4">
+      </video>
+      <div class="video-fallback visible" id="heroMainFallback"><span>Preview unavailable</span></div>
+    </div>
     <p>AntVisual Designs is a design studio for branding, websites, decks, infographics and social design. Led by Prathamesh, with one senior designer on every brief and 17 years behind the work.</p>
     <div class="row"><a class="btn" data-go="home" data-to="contact">Start a project</a><a class="btn o" data-go="ant">What is an Ant?</a></div>
+    <p></p>
+    <div class="cap"><b>Design fundamentals in minutes</b><span></span></div>
     <div class="video" id="video">
-      <video id="heroVideo" preload="metadata" playsinline muted>
-        <source src="Infographic_demonstrating_visual%E2%80%A6_20261009004303.mp4" type="video/mp4">
+      <video id="heroVideo" autoplay loop muted playsinline preload="auto">
+        <source src="infographic-demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <div class="overlay" id="videoOverlay">
-        <button class="play" id="videoPlayBtn" aria-label="Play video: Design fundamentals"></button>
-      </div>
-      <div class="cap"><b>Design fundamentals in five minutes</b><span>Video placeholder: replace with the AntVisual design basics film</span></div>
+      <!-- 
+<div class="cap"><b>Design fundamentals in minutes</b><span>Video placeholder: replace with the AntVisual design basics film</span></div>-->
     </div>
   </div>
 
@@ -255,34 +269,70 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
 })();
 
 (function(){
-  var video=document.getElementById('heroVideo');
-  var playBtn=document.getElementById('videoPlayBtn');
-  var overlay=document.getElementById('videoOverlay');
-  if(!video||!playBtn||!overlay)return;
+  var v=document.getElementById('heroMain'),fallback=document.getElementById('heroMainFallback');
+  if(!v)return;
 
-  video.muted=true;
-  video.setAttribute('playsinline','');
-  video.setAttribute('webkit-playsinline','');
+  function setFallback(show, message){
+    if(!fallback)return;
+    fallback.classList.toggle('visible', !!show);
+    if(message){
+      fallback.querySelector('span').textContent=message;
+    }
+  }
 
-  playBtn.addEventListener('click',function(e){
-    e.preventDefault();
-    var promise=video.play();
-    if(promise&&typeof promise.catch==='function'){
-      promise.catch(function(){
-        video.muted=false;
-        video.play();
+  function tryPlay(){
+    if(v.readyState < 1){
+      v.load();
+    }
+    var p=v.play();
+    if(p&&typeof p.catch==='function'){
+      p.catch(function(){
+        if(!v.muted){
+          v.muted=true;
+          var mutedPlayback=v.play();
+          if(mutedPlayback&&typeof mutedPlayback.catch==='function'){
+            mutedPlayback.catch(function(){
+              setFallback(true,'Preview unavailable');
+            });
+          }
+          return;
+        }
+        setFallback(true,'Preview unavailable');
       });
     }
-    overlay.classList.add('hidden');
+  }
+
+  v.muted=false;
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+
+  v.addEventListener('playing',function(){
+    setFallback(false);
   });
 
-  video.addEventListener('pause',function(){
-    overlay.classList.remove('hidden');
+  v.addEventListener('error',function(){
+    setFallback(true,'Preview unavailable');
   });
 
-  video.addEventListener('ended',function(){
-    overlay.classList.remove('hidden');
+  v.addEventListener('pause',function(){
+    if(v.ended){
+      setFallback(true,'Preview unavailable');
+    }
   });
+
+  v.addEventListener('ended',function(){
+    v.currentTime=0;
+    setFallback(false);
+    tryPlay();
+  });
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    v.pause();
+    setFallback(true,'Motion reduced');
+  } else {
+    tryPlay();
+  }
 })();
 
 (function(){
