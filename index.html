@@ -79,7 +79,7 @@ h2{font-size:clamp(34px,5vw,64px)}.sh p{color:var(--mute);font-size:19px;max-wid
 
 .proj{gap:24px 16px}.tile{aspect-ratio:auto;padding:0;background:none;border-radius:0;justify-content:flex-start}
 .tile .img{aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:var(--soft);transition:transform .25s}
-.tile:hover .img{transform:translateY(-4px)}.tile .img svg{display:block;width:100%;height:100%}
+.tile:hover .img{transform:translateY(-4px)}.tile .img svg,.tile .img img{display:block;width:100%;height:100%;object-fit:cover}
 .tile h3{font-size:24px;margin-top:16px}.tile span{margin-top:4px}
 .grid.g2{grid-template-columns:1fr 1fr}@media(max-width:700px){.grid.g2{grid-template-columns:1fr}}
 .grid.g2 .cell:nth-child(odd){padding-right:48px}@media(max-width:700px){.grid.g2 .cell:nth-child(odd){padding-right:0}}
@@ -140,7 +140,7 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
   <section id="work"><div class="w">
     <div class="sh"><h2>Selected work</h2><p>Projects across identity, web and communication design. Full case studies are added as each engagement completes.</p></div>
     <div class="proj">
-     <div class="tile"><div class="img"><img src="website.jpeg" alt="Brand identity and logo design projects" loading="lazy" decoding="async"></div><h3>Branding</h3><span>Identity design for modern enterprises</span></div>
+      <div class="tile"><div class="img"><img src="website.jpeg" alt="Brand identity and logo design projects" loading="lazy" decoding="async"></div><h3>Branding</h3><span>Identity design for modern enterprises</span></div>
       <div class="tile"><div class="img"><img src="branding.jpeg" alt="Website design project examples" loading="lazy" decoding="async"></div><h3>Websites</h3><span>Design and strategy for digital presence</span></div>
       <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0a0a0a"/><circle cx="120" cy="150" r="60" fill="#f08aa6"/><circle cx="280" cy="150" r="60" fill="#7cc4f4"/></svg></div><h3>Infographics</h3><span>Complex data made visual and clear</span></div>
       <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#E89A0C"/><rect x="30" y="70" width="120" height="160" fill="#fff"/><rect x="250" y="70" width="120" height="160" fill="#fff"/></svg></div><h3>Decks</h3><span>Pitch and presentation design</span></div>
