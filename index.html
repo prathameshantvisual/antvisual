@@ -32,14 +32,19 @@ header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px s
 .herovid{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#111 0%,#1b1b1b 40%,#101010 100%);border:1px solid var(--line)}
 .herovid video{width:100%;height:100%;object-fit:cover;display:block;background:#111}
 .video-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none;background:linear-gradient(135deg,rgba(17,17,17,.9),rgba(28,28,28,.75));color:#f3f3f0;opacity:0;transition:opacity .2s ease}
-.video-fallback.visible{opacity:1}
+.video-fallback.visible{opacity:1;pointer-events:auto;cursor:pointer}
 .video-fallback span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.04);font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase}
+.vctl{position:absolute;right:16px;bottom:16px;z-index:3;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#f3f3f0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 14px;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vctl:hover{background:rgba(0,0,0,.65)}
 @media(max-width:640px){.herovid{border-radius:14px}}
 .hero h1{font-size:clamp(46px,8.4vw,128px);max-width:14ch}
 .hero p{font-size:clamp(18px,1.8vw,22px);color:var(--mute);max-width:52ch;margin:28px 0 0}
 .btn{display:inline-block;background:var(--btn);color:var(--btn-t);padding:15px 28px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--btn);transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}
 .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.videos .video{margin:0}
+@media(max-width:700px){.videos{grid-template-columns:1fr}}
 .video{margin:24px 0 0;aspect-ratio:16/9;background:var(--soft);border-radius:20px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--line)}
 .video video{width:100%;height:100%;object-fit:cover;display:block;background:#efefef}
 .video .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.04);z-index:2;pointer-events:none}
@@ -118,22 +123,30 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
   <div class="w hero hv">
     <h1 class="sr-only">Good design, run like a business.</h1>
     <div class="herovid" id="heroMainWrap">
-      <video id="heroMain" autoplay playsinline loop preload="auto" aria-label="Good design, run like a business. Animated headline">
+      <!-- FIX: muted attribute is REQUIRED in the HTML for Safari desktop autoplay -->
+      <video id="heroMain" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Good design, run like a business. Animated headline">
         <source src="hero-vid.mp4" type="video/mp4">
       </video>
-      <div class="video-fallback visible" id="heroMainFallback"><span>Preview unavailable</span></div>
+      <div class="video-fallback visible" id="heroMainFallback" role="button" tabindex="0"><span>Loading preview</span></div>
+      <button type="button" class="vctl" id="heroCtl" aria-label="Pause hero video" hidden>Pause</button>
     </div>
     <p>AntVisual Designs is a design studio for branding, websites, decks, infographics and social design. Led by Prathamesh, with one senior designer on every brief and 17 years behind the work.</p>
     <div class="row"><a class="btn" data-go="home" data-to="contact">Start a project</a><a class="btn o" data-go="ant">What is an Ant?</a></div>
     <p></p>
     <div class="cap"><b>Design fundamentals in minutes</b><span></span></div>
-    <div class="video" id="video">
-      <video id="heroVideo" autoplay loop muted playsinline preload="auto">
-        <source src="infographic-demo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- 
-<div class="cap"><b>Design fundamentals in minutes</b><span>Video placeholder: replace with the AntVisual design basics film</span></div>-->
+    <div class="videos">
+      <div class="video" id="video">
+        <video id="heroVideo" class="demo-vid" autoplay loop muted playsinline preload="auto" aria-label="Infographic design demo">
+          <source src="infographic-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video" id="video2">
+        <video id="paletteVideo" class="demo-vid" autoplay loop muted playsinline preload="auto" aria-label="Colour palette demo">
+          <source src="palette.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   </div>
 
@@ -268,71 +281,148 @@ form.enq button[disabled]{opacity:.6;cursor:wait}
   });
 })();
 
+/* ------------------------------------------------------------------
+   HERO VIDEO (fixed)
+   Root causes of the old desktop-Safari bug:
+   1. The script treated "prefers-reduced-motion" as "never play" and
+      called v.pause(). Desktop macOS often has Reduce Motion on (or
+      Safari reports it), phones usually don't, so only desktop broke.
+   2. The video had no `muted` attribute in HTML and the script forced
+      v.muted=false. Safari desktop blocks autoplay with sound, so the
+      first play() was rejected. Any later click (Work, Services...)
+      counted as a user gesture, which is why it suddenly started.
+   3. Nothing retried play() after a failure, a refresh (bfcache),
+      tab switch, or when the video scrolled back into view.
+   Fix: always muted, always attempt play, retry on every sensible
+   event, and give people a visible Pause/Play button.
+------------------------------------------------------------------- */
 (function(){
-  var v=document.getElementById('heroMain'),fallback=document.getElementById('heroMainFallback');
+  var v=document.getElementById('heroMain');
+  var fb=document.getElementById('heroMainFallback');
+  var ctl=document.getElementById('heroCtl');
   if(!v)return;
 
-  function setFallback(show, message){
-    if(!fallback)return;
-    fallback.classList.toggle('visible', !!show);
-    if(message){
-      fallback.querySelector('span').textContent=message;
-    }
+  var userPaused=false;
+  var fbText=fb?fb.querySelector('span'):null;
+
+  function setFb(show,msg){
+    if(!fb)return;
+    fb.classList.toggle('visible',!!show);
+    if(msg&&fbText)fbText.textContent=msg;
+  }
+  function setCtl(playing){
+    if(!ctl)return;
+    ctl.hidden=false;
+    ctl.textContent=playing?'Pause':'Play';
+    ctl.setAttribute('aria-label',playing?'Pause hero video':'Play hero video');
+  }
+
+  function forceMuted(){
+    v.muted=true;
+    v.defaultMuted=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+    v.setAttribute('webkit-playsinline','');
   }
 
   function tryPlay(){
-    if(v.readyState < 1){
-      v.load();
+    if(userPaused)return;
+    forceMuted();
+    var p;
+    try{p=v.play();}catch(e){p=null;}
+    if(p&&typeof p.then==='function'){
+      p.then(function(){setFb(false);setCtl(true);})
+       .catch(function(){
+         // Autoplay blocked: show a clickable overlay, retry on first gesture
+         setFb(true,'Click to play');
+         setCtl(false);
+       });
     }
-    var p=v.play();
-    if(p&&typeof p.catch==='function'){
-      p.catch(function(){
-        if(!v.muted){
-          v.muted=true;
-          var mutedPlayback=v.play();
-          if(mutedPlayback&&typeof mutedPlayback.catch==='function'){
-            mutedPlayback.catch(function(){
-              setFallback(true,'Preview unavailable');
-            });
-          }
-          return;
-        }
-        setFallback(true,'Preview unavailable');
+  }
+
+  // Retry on first real user interaction (browsers allow play() then)
+  var gestureEvents=['pointerdown','mousedown','touchstart','keydown','wheel','scroll'];
+  function onGesture(){
+    if(!userPaused&&v.paused)tryPlay();
+    if(!v.paused){
+      gestureEvents.forEach(function(ev){window.removeEventListener(ev,onGesture,true);});
+    }
+  }
+  gestureEvents.forEach(function(ev){window.addEventListener(ev,onGesture,{capture:true,passive:true});});
+
+  // Video element events
+  v.addEventListener('playing',function(){setFb(false);setCtl(true);});
+  v.addEventListener('pause',function(){if(!v.ended)setCtl(false);});
+  v.addEventListener('loadeddata',tryPlay);
+  v.addEventListener('canplay',function(){if(v.paused)tryPlay();});
+  v.addEventListener('stalled',function(){if(v.paused)tryPlay();});
+  v.addEventListener('error',function(){setFb(true,'Preview unavailable');});
+  v.addEventListener('ended',function(){v.currentTime=0;tryPlay();}); // safety net if loop is ignored
+
+  // Pause / play button (accessibility: user always has control)
+  if(ctl){
+    ctl.addEventListener('click',function(){
+      if(v.paused){userPaused=false;tryPlay();}
+      else{userPaused=true;v.pause();}
+    });
+  }
+  // Clicking the overlay starts the video
+  if(fb){
+    var startFromOverlay=function(){userPaused=false;tryPlay();};
+    fb.addEventListener('click',startFromOverlay);
+    fb.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();startFromOverlay();}
+    });
+  }
+
+  // Resume when the tab becomes visible again
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden&&v.paused)tryPlay();
+  });
+  // Refresh / back-forward cache (Safari restores pages without re-running scripts)
+  window.addEventListener('pageshow',function(){if(v.paused)tryPlay();});
+  window.addEventListener('focus',function(){if(v.paused)tryPlay();});
+
+  // Resume when scrolled back into view (Safari may pause offscreen videos)
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting&&v.paused)tryPlay();
       });
-    }
+    },{threshold:.25}).observe(v);
   }
 
-  v.muted=false;
-  v.setAttribute('playsinline','');
-  v.setAttribute('webkit-playsinline','');
+  // Kick things off now, and once more after full load
+  if(v.readyState<2)v.load();
+  tryPlay();
+  window.addEventListener('load',function(){if(v.paused)tryPlay();});
+  // If it is already playing by the time this runs
+  if(!v.paused){setFb(false);setCtl(true);}
+})();
 
-  v.addEventListener('playing',function(){
-    setFallback(false);
-  });
-
-  v.addEventListener('error',function(){
-    setFallback(true,'Preview unavailable');
-  });
-
-  v.addEventListener('pause',function(){
-    if(v.ended){
-      setFallback(true,'Preview unavailable');
+/* Autoplay safety for the two demo videos (muted, retry on gesture/visibility) */
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('.demo-vid'));
+  vids.forEach(function(v){
+    v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');
+    function go(){
+      if(!v.paused)return;
+      v.muted=true;
+      var p;try{p=v.play();}catch(e){}
+      if(p&&p.catch)p.catch(function(){});
     }
+    v.addEventListener('loadeddata',go);
+    v.addEventListener('canplay',go);
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go();});},{threshold:.25}).observe(v);
+    }
+    ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
+      window.addEventListener(ev,go,{once:true,passive:true,capture:true});
+    });
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
+    window.addEventListener('pageshow',go);
+    go();
   });
-
-  v.addEventListener('ended',function(){
-    v.currentTime=0;
-    setFallback(false);
-    tryPlay();
-  });
-
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce){
-    v.pause();
-    setFallback(true,'Motion reduced');
-  } else {
-    tryPlay();
-  }
 })();
 
 (function(){
