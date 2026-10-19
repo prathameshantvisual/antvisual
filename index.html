@@ -1,550 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AntVisual Designs — Good design, run like a business.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--soft:#f4f4f2;--ink:#0a0a0a;--mute:#606060;--line:#e3e3e0;--btn:#0a0a0a;--btn-t:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0b0b;--soft:#161616;--ink:#f2f2f0;--mute:#a0a0a0;--line:#2a2a2a;--btn:#f2f2f0;--btn-t:#0a0a0a}:root:not([data-theme="light"]) .logo img,:root:not([data-theme="light"]) .cta-logo{filter:invert(1)}}
-:root[data-theme="dark"]{--bg:#0b0b0b;--soft:#161616;--ink:#f2f2f0;--mute:#a0a0a0;--line:#2a2a2a;--btn:#f2f2f0;--btn-t:#0a0a0a}
-:root[data-theme="dark"] .logo img,:root[data-theme="dark"] .cta-logo{filter:invert(1)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:'Inter Tight',Inter,sans-serif;font-weight:600;letter-spacing:-.025em;margin:0;line-height:1.05}
-a{color:inherit}:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.w{max-width:1240px;margin:0 auto;padding:0 32px}@media(max-width:640px){.w{padding:0 20px}}
-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;text-decoration:none}
-.logo img{height:38px;width:auto;display:block}
-.nav nav{display:flex;gap:32px;align-items:center}
-.nav nav a{text-decoration:none;font-size:15px;font-weight:500;color:var(--mute);cursor:pointer;transition:color .15s}
-.nav nav a:hover,.nav nav a.on{color:var(--ink)}
-.nav .pill{background:var(--btn);color:var(--btn-t)!important;padding:9px 18px;border-radius:99px}
-@media(max-width:720px){.nav nav{gap:16px}.nav nav a{font-size:13.5px}.nav nav a.hide{display:none}}
-.view{display:none}.view.on{display:block}
-.hero{padding-top:110px;padding-bottom:56px}.hero.hv{padding-top:40px}
-.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.herovid{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#111 0%,#1b1b1b 40%,#101010 100%);border:1px solid var(--line)}
-.herovid video{width:100%;height:100%;object-fit:cover;display:block;background:#111}
-.video-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none;background:linear-gradient(135deg,rgba(17,17,17,.9),rgba(28,28,28,.75));color:#f3f3f0;opacity:0;transition:opacity .2s ease}
-.video-fallback.visible{opacity:1;pointer-events:auto;cursor:pointer}
-.video-fallback span{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.04);font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase}
-.vctl{position:absolute;right:16px;bottom:16px;z-index:3;font:500 12px/1 Inter,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#f3f3f0;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 14px;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.vctl:hover{background:rgba(0,0,0,.65)}
-@media(max-width:640px){.herovid{border-radius:14px}}
-.hero h1{font-size:clamp(46px,8.4vw,128px);max-width:14ch}
-.hero p{font-size:clamp(18px,1.8vw,22px);color:var(--mute);max-width:52ch;margin:28px 0 0}
-.btn{display:inline-block;background:var(--btn);color:var(--btn-t);padding:15px 28px;border-radius:99px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--btn);transition:transform .2s}
-.btn:hover{transform:translateY(-2px)}.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}
-.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
-.videos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-.videos .video{margin:0}
-@media(max-width:700px){.videos{grid-template-columns:1fr}}
-.video{margin:24px 0 0;aspect-ratio:16/9;background:var(--soft);border-radius:20px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--line)}
-.video video{width:100%;height:100%;object-fit:cover;display:block;background:#efefef}
-.video .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.04);z-index:2;pointer-events:none}
-.video .overlay.hidden{display:none}
-.play{width:88px;height:88px;border-radius:50%;background:var(--btn);display:flex;align-items:center;justify-content:center;border:0;cursor:pointer;transition:transform .2s;pointer-events:auto}
-.play:hover{transform:scale(1.07)}.play:after{content:"";border-left:24px solid var(--btn-t);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:7px}
-.video .cap{position:absolute;left:28px;bottom:24px;right:28px;z-index:3;pointer-events:none}
-.video .cap b{font:600 clamp(20px,2.6vw,30px) 'Inter Tight';letter-spacing:-.02em;display:block}
-.video .cap span{color:var(--mute);font-size:14px}
-sec,section{display:block;padding:96px 0;border-top:1px solid var(--line)}
-.sh{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;margin-bottom:56px}@media(max-width:820px){.sh{grid-template-columns:1fr;gap:16px}}
-h2{font-size:clamp(34px,5vw,64px)}.sh p{color:var(--mute);font-size:19px;max-width:54ch;margin:0}
-.stats{display:flex;gap:clamp(32px,7vw,110px);flex-wrap:wrap;margin-top:56px}
-.stats b{display:block;font:600 clamp(52px,7vw,96px) 'Inter Tight';letter-spacing:-.04em;line-height:1}
-.stats span{color:var(--mute);font-size:15px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
-@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}}
-.cell{padding:36px 32px 44px 0;border-bottom:1px solid var(--line)}
-.cell h3{font-size:26px;margin-bottom:12px}.cell p{color:var(--mute);margin:0;max-width:34ch}
-.cap4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:1000px){.cap4{grid-template-columns:1fr 1fr}}@media(max-width:600px){.cap4{grid-template-columns:1fr}}
-.card{background:var(--soft);border-radius:20px;padding:30px 26px}
-.card h4{font-size:24px;margin-bottom:12px}.card p{color:var(--mute);margin:0 0 20px;font-size:15px}
-.card ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
-.card li{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.proj{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:700px){.proj{grid-template-columns:1fr}}
-.tile{background:var(--soft);border-radius:20px;aspect-ratio:4/3;padding:28px;display:flex;flex-direction:column;justify-content:flex-end}
-.tile h3{font-size:28px}.tile span{color:var(--mute);font-size:14px;margin-top:6px}
-.lead{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center}@media(max-width:700px){.lead{grid-template-columns:1fr}}
-.ph{aspect-ratio:1;border-radius:20px;background:var(--soft);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:13px;text-align:center;padding:20px}
-.lead h3{font-size:32px}.lead p{color:var(--mute);max-width:56ch;margin:10px 0 0}
-.cta{padding:120px 0 80px;border-top:1px solid var(--line)}
-.cta-logo{display:block;width:220px;height:auto;margin-bottom:22px}
-.cta h2{font-size:clamp(44px,9vw,140px);max-width:12ch}
-.fine{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute);font-size:14px;margin-top:96px;padding-top:24px;border-top:1px solid var(--line)}
-.fine a{text-decoration:none}.fine a:hover{color:var(--ink)}
+:root{--bg:#f4f4ef;--ink:#121212;--mute:#5d5d57;--lime:#cde66a;--line:#d9d9d0;--card:#fff;--logo-filter:none;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101010;--ink:#f1f1ea;--mute:#a4a49a;--line:#2c2c2a;--card:#1a1a19;--logo-filter:invert(1)}}
+:root[data-theme="dark"]{--bg:#101010;--ink:#f1f1ea;--mute:#a4a49a;--line:#2c2c2a;--card:#1a1a19;--logo-filter:invert(1)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:rgba(16,16,16,.55);backdrop-filter:blur(10px)}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;letter-spacing:-.025em;line-height:1.02;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: calc(env(safe-area-inset-top, 0px) + 14px) 24px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000000;
+    color: #f1f1ea;
+}header img{height:30px;filter:invert(1);display:block}
+nav{display:flex;gap:26px;font-weight:500;font-size:15px}
+nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--lime)}
+.hero{position:relative;min-height:100vh;min-height:100svh;background:#101010;color:#f1f1ea;display:flex;align-items:flex-end;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,16,16,.35),rgba(16,16,16,.1) 40%,rgba(16,16,16,.85))}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:48px}
+.hero h1{font-size:clamp(44px,8.6vw,120px);font-weight:800;max-width:11ch;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero p{max-width:520px;color:#d6d6cc;margin:22px 0 28px}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;padding:15px 26px;border-radius:999px;background:var(--lime);color:#121212;font-weight:700;text-decoration:none;border:0;font:700 16px "DM Sans",sans-serif;cursor:pointer}
+.btn:hover{background:#dcf08a}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+#pp{position:absolute;right:24px;bottom:48px;z-index:3;padding:9px 16px;font-size:14px}
+section{padding:110px 0}
+.h2{font-size:clamp(34px,5vw,64px);font-weight:700;max-width:16ch}
+.lede{color:var(--mute);max-width:560px;margin:18px 0 0}
+.where{background:#121212;color:#fafaf8}
+.where .lede{color:#fffffd}
+.svc{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:44px}
+.list{border-top:1px solid var(--line)}
+.item{padding:22px 4px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px;transition:background .2s,padding .2s}
+.item:hover{background:var(--lime);color:#121212;padding-left:18px;padding-right:18px}
+.item:hover p{color:#2b2b28}
+.item h3{font-size:24px;font-weight:700;letter-spacing:-.015em;line-height:1.1}
+.item p{margin:0;color:var(--mute);font-size:16px}
+.item em{font-style:normal;display:inline-block;background:#121212;color:var(--lime);font-size:13px;padding:2px 10px;border-radius:999px;margin-top:8px}
+.sticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + 90px)}
+.ant{background:var(--lime);color:#121212}
+.ant .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ant img.g{width:100%;max-width:460px;border-radius:50%;display:block;margin:0 auto}
+.ant p{max-width:480px;font-size:19px}
+.vid{margin-top:34px}
+.vid video{width:100%;border-radius:20px;display:block;background:#fff}
+.vid span{display:block;margin-top:10px;font-weight:700}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact a.m{font:700 clamp(20px,2.4vw,30px) "Bricolage Grotesque",sans-serif;display:block;margin-top:22px;text-decoration:none;border-bottom:2px solid var(--lime);width:max-content;max-width:100%}
+form{display:grid;gap:14px}
+label{font-weight:500;font-size:15px;display:grid;gap:6px}
+input,select,textarea{font:400 17px "DM Sans",sans-serif;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:820px){nav{gap:16px;font-size:14px}.svc,.ant .grid,.contact .grid{grid-template-columns:1fr;gap:36px}.item{grid-template-columns:1fr;gap:6px}section{padding:76px 0}#pp{bottom:auto;top:calc(env(safe-area-inset-top,0px) + 76px)}}
+@media (prefers-reduced-motion:reduce){.hero h1{animation:none}html{scroll-behavior:auto}.item{transition:none}}
 
-.proj{gap:24px 16px}.tile{aspect-ratio:auto;padding:0;background:none;border-radius:0;justify-content:flex-start}
-.tile .img{aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:var(--soft);transition:transform .25s}
-.tile:hover .img{transform:translateY(-4px)}.tile .img svg,.tile .img img{display:block;width:100%;height:100%;object-fit:cover}
-.tile h3{font-size:24px;margin-top:16px}.tile span{margin-top:4px}
-.grid.g2{grid-template-columns:1fr 1fr}@media(max-width:700px){.grid.g2{grid-template-columns:1fr}}
-.grid.g2 .cell:nth-child(odd){padding-right:48px}@media(max-width:700px){.grid.g2 .cell:nth-child(odd){padding-right:0}}
-.map{position:relative;aspect-ratio:1000/480;max-width:1100px;margin:0 auto;color:var(--mute)}
-.map svg{position:absolute;inset:0;width:100%;height:100%}
-.pl{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);white-space:nowrap;font:500 clamp(11px,1.45vw,17px)/1 'Inter Tight',sans-serif;padding:.8em 1.2em;border-radius:99px;display:inline-block}
-.pl.core{background:var(--btn);color:var(--btn-t)}.pl.core i{width:.8em;height:.8em;border-radius:50%;background:var(--c)}
-.pl.far{border:1px solid var(--line);color:var(--mute);background:var(--bg)}
-.ax{position:absolute;top:50%;transform:translateY(-50%);font:600 clamp(12px,1.6vw,18px) 'Inter Tight',sans-serif;color:var(--ink)}
-.ax.l{left:1%}.ax.r{right:1%}
-@media(max-width:820px){.map{aspect-ratio:auto;display:flex;flex-wrap:wrap;gap:8px}.map svg,.ax{display:none}.pl{position:static;transform:none;font-size:14px}}
-.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;margin-top:48px}@media(max-width:820px){.contact{grid-template-columns:1fr;gap:32px}}
-.contact p.lead2{color:var(--mute);font-size:19px;max-width:40ch;margin:0}
-form.enq{display:grid;gap:14px}
-form.enq label{display:grid;gap:6px;font-size:14px;font-weight:500}
-form.enq input,form.enq select,form.enq textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-form.enq textarea{min-height:130px;resize:vertical}
-form.enq button{font:inherit;font-weight:600;cursor:pointer;justify-self:start}
-form.enq button[disabled]{opacity:.6;cursor:wait}
-#fmsg{font-size:15px;min-height:1.4em;margin:0}
-</style>
-</head>
-<body>
-<header><div class="w nav">
-  <a class="logo" href="#home" data-go="home" aria-label="AntVisual Designs home"><img src="logo.png" alt="AntVisual Designs"></a>
-  <nav>
-    <a data-go="home" data-to="work" class="hide">Work</a>
-    <a data-go="home" data-to="services" class="hide">Services</a>
-    <a data-go="ant" id="navant">Ant?</a>
-    <a data-go="home" data-to="contact" class="pill">Contact</a>
-  </nav>
-</div></header>
+section,.hero{position:relative;overflow:hidden;overflow:clip}.wrap{position:relative;z-index:1}
+.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
+.bgv.mul{mix-blend-mode:multiply}.bgv.scr{mix-blend-mode:screen}
+.ghost{position:absolute;pointer-events:none;z-index:0;width:min(640px,80vw);aspect-ratio:1;-webkit-mask-image:radial-gradient(circle,#000 35%,transparent 70%);mask-image:radial-gradient(circle,#000 35%,transparent 70%)}
+.ghost.mul{mix-blend-mode:multiply}.ghost.neg{filter:grayscale(1) invert(1);mix-blend-mode:screen}
+
+body.intro{overflow:hidden}.intro .hero h1{animation:none;opacity:0}
+#intro{position:fixed;inset:0;z-index:100;background:#fff;display:grid;place-items:center;transition:opacity .9s ease .1s;animation:introOut .9s ease 14s forwards}
+#intro video{width:min(100vw,177vh);height:auto;max-height:100%;mix-blend-mode:multiply;transform:scale(1);transition:transform 1s cubic-bezier(.6,0,.3,1),filter 1s}
+#intro.out{opacity:0;pointer-events:none}#intro.out video{transform:scale(2.2);filter:brightness(1.4)}
+#skip{position:absolute;right:20px;top:calc(env(safe-area-inset-top,0px) + 18px);background:#121212;color:#f1f1ea;border:0;border-radius:999px;padding:10px 18px;font:500 15px "DM Sans",sans-serif;cursor:pointer}
+#skip:hover{background:#2a2a28}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){#intro{display:none}}
+
+#intro>video,#intro>img,#intro>.halo{grid-area:1/1}
+#intro .halo{width:min(70vmin,60vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(205,230,106,.95),rgba(205,230,106,0) 66%);mix-blend-mode:multiply;opacity:0}
+#il{width:calc(min(100vw,177.7vh)*.44);height:auto;mix-blend-mode:multiply;opacity:0;will-change:transform,filter,opacity;position:relative}
+#intro.fly{background:transparent;transition:background .8s ease .15s;animation:none}
+#intro.fly video{opacity:0;transition:opacity .5s}
+#intro.fly #il{mix-blend-mode:normal}
+header img{opacity:0;animation:showLogo .1s 14.2s forwards}header.ready img{opacity:1;animation:none}
+@keyframes showLogo{to{opacity:1}}
+
+.reel{padding:0;background:var(--bg)}
+.reel .stage{background:#101010;position:relative;height:clamp(420px,88vh,900px);overflow:hidden}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel .stage:before,.reel .stage:after{content:"";position:absolute;left:0;right:0;z-index:1;pointer-events:none}
+.reel .stage:before{top:0;height:22%;background:linear-gradient(#101010,rgba(16,16,16,0))}
+.reel .stage:after{bottom:0;height:38%;background:linear-gradient(rgba(0,0,0,0),var(--bg) 92%)}
+.reel .row2{position:relative;z-index:2;margin-top:-110px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.rcap{display:inline-flex;flex-direction:column;background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;text-decoration:none;min-width:230px}
+.rcap b{font:700 17px "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}.rcap span{font-size:13px;opacity:.7}
+.rcap:hover{background:var(--lime);color:#121212}
+.rcap.sw{animation:swap .35s ease}
+@keyframes swap{from{opacity:.2;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rcap.sw{animation:none}}
+
+#sp{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);z-index:70}
+.js .mk{overflow:hidden;padding-bottom:.1em}.js .mk span{display:block;transform:translateY(112%);transition:transform .95s cubic-bezier(.2,.7,.2,1)}.js .mk.in span{transform:none}
+.pan{animation:pan 14s ease-in-out infinite alternate}@keyframes pan{from{object-position:50% 0}to{object-position:50% 100%}}
+.pfs{padding:0;overflow:visible;overflow-x:clip}.track{position:relative;z-index:1}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;padding-top:64px}
+.track{display:flex;align-items:center;gap:26px;padding:0 6vw;will-change:transform;--h:min(64vh,600px)}
+.pnl{flex:none;width:min(460px,80vw);padding-right:24px}.pnl .h2{font-size:clamp(34px,4.4vw,60px);max-width:11ch}
+.pc{position:relative;flex:none;height:var(--h);aspect-ratio:.6;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:block;text-decoration:none;color:inherit}
+.pc.wide{height:calc(var(--h)*.74);aspect-ratio:1.4}
+.pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}.pc:hover img:not(.pan){transform:scale(1.04)}
+.pc .cap{position:absolute;left:14px;bottom:14px;z-index:1;background:var(--bg);color:var(--ink);padding:9px 15px;border-radius:999px;max-width:calc(100% - 28px)}
+.pc .cap b{display:block;font:700 17px "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}.pc .cap span{font-size:13px;color:var(--mute)}
+.more{flex:none;width:min(380px,80vw);padding-right:6vw}.more h3{font-size:30px;font-weight:700}
+.more ul{list-style:none;margin:16px 0 22px;padding:0;border-top:1px solid var(--line)}
+.more li a{display:flex;justify-content:space-between;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .2s,background .2s}
+.more li a:hover{background:var(--lime);color:#121212;padding-left:12px;padding-right:12px}.more li span{color:var(--mute);font-size:14px}.more li a:hover span{color:#2b2b28}
+.pbar{position:absolute;left:6vw;right:6vw;bottom:calc(env(safe-area-inset-bottom,0px) + 58px);height:3px;background:var(--line);border-radius:3px}
+.pbar i{display:block;height:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);border-radius:3px}
+.where{border-radius:44px 44px 0 0;margin-top:-44px;z-index:2;padding-bottom:154px}
+#services{border-radius:44px 44px 0 0;margin-top:-44px;z-index:3;background:var(--bg)}
+.orbit{position:relative;margin:48px auto 0;width:100%}
+.cr{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.cr span{font:800 clamp(34px,9vw,60px)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;padding:12px 26px 16px;border-radius:999px;background:var(--lime);color:#121212}
+.orb{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0 0 10px;padding:0}
+.orb li{border:1.5px solid #4a4a46;border-radius:999px;padding:9px 18px;color:#d6d6cc;font-size:16px;background:#121212}
+.orb li:hover{border-color:var(--lime);color:var(--lime)}
+.rg{display:none}
+@media (min-width:701px){
+.orbit{container-type:inline-size;width:min(100%,780px);aspect-ratio:1}
+.rg{display:block;position:absolute;left:50%;top:50%;border:1.5px dashed #3a3a37;border-radius:50%;transform:translate(-50%,-50%)}
+.r1{width:47cqw;height:47cqw}.r2{width:78cqw;height:78cqw}
+.cr{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1cqw;margin:0;z-index:2}
+.cr span{font-size:3.5cqw;padding:.8cqw 2.2cqw 1cqw}
+.orb{display:block;position:absolute;inset:0;margin:0;transform:rotate(var(--rot,0deg))}
+.orb li{position:absolute;left:50%;top:50%;white-space:nowrap;font-size:max(11px,1.75cqw);padding:.7cqw 1.5cqw;transform:translate(-50%,-50%) rotate(var(--a)) translateY(calc(var(--r)*-1cqw)) rotate(calc(var(--a)*-1 - var(--rot,0deg)))}
+}
+.item.on{background:var(--lime);color:#000000;padding-left:18px;padding-right:18px}.item.on p{color:#000000}
+.sticky .st{position:relative;aspect-ratio:4/5;max-height:calc(100vh - 150px);width:100%;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.st figure{position:absolute;inset:0;margin:0;clip-path:inset(100% 0 0 0);transition:clip-path 0s .85s}
+.st figure.on{clip-path:inset(0);transition:clip-path .85s cubic-bezier(.7,0,.2,1);z-index:2}
+.st img,.st video{width:100%;height:100%;object-fit:cover;display:block;border:0;border-radius:0}
+.st figcaption{position:absolute;left:14px;bottom:14px;background:var(--bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:14px;max-width:calc(100% - 28px)}
+@media (max-width:820px),(prefers-reduced-motion:reduce){.pfs{height:auto!important}.pin{position:static;height:auto;overflow:visible;display:block;padding:90px 0 40px}.track{overflow-x:auto;scroll-snap-type:x mandatory;transform:none!important;--h:min(62vh,520px);padding:0 24px 20px}.track>*{scroll-snap-align:center}.pbar{display:none}.pnl{width:min(300px,78vw)}}
+@media (max-width:820px){.svc{display:block}.sticky{position:sticky!important;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:4;background:var(--bg);padding:8px 0 12px;margin-bottom:6px;order:0}.sticky .st{aspect-ratio:auto;height:34vh}.where,#services{border-radius:28px 28px 0 0;margin-top:-28px}}
+@media (prefers-reduced-motion:reduce){.pan{animation:none}.js .mk span{transform:none;transition:none}.st figure,.st figure.on{transition:none}}
+</style><script>document.documentElement.className+=" js"</script></head><body id="top" class="intro">
+<div id="intro" role="presentation"><video id="iv" src="assets/intro-portal.mp4" muted playsinline preload="auto" aria-hidden="true"></video><div class="halo" id="ih"></div><img id="il" src="assets/logo.png" alt=""><button id="skip" type="button"></button></div>
+<i id="sp"></i>
+<header><img src="assets/logo.png" alt="AntVisual Designs"><nav><a href="#pfs">Work</a><a href="#services">Services</a><a href="#ant">Ant?</a><a href="#contact">Contact</a></nav></header>
 
 <main>
-<div class="view on" id="v-home">
-  <div class="w hero hv">
-    <h1 class="sr-only">Good design, run like a business.</h1>
-    <div class="herovid" id="heroMainWrap">
-      <!-- FIX: muted attribute is REQUIRED in the HTML for Safari desktop autoplay -->
-      <video id="heroMain" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Good design, run like a business. Animated headline">
-        <source src="hero-vid.mp4" type="video/mp4">
-      </video>
-      <div class="video-fallback visible" id="heroMainFallback" role="button" tabindex="0"><span>Loading preview</span></div>
-      <button type="button" class="vctl" id="heroCtl" aria-label="Pause hero video" hidden>Pause</button>
-    </div>
-    <p>AntVisual Designs is a design studio for branding, websites, decks, infographics and social design. Led by Prathamesh, with one senior designer on every brief and 17 years behind the work.</p>
-    <div class="row"><a class="btn" data-go="home" data-to="contact">Start a project</a><a class="btn o" data-go="ant">What is an Ant?</a></div>
-    <p></p>
-    <div class="cap"><b>Design fundamentals in minutes</b><span></span></div>
-    <div class="videos">
-      <div class="video" id="video">
-        <video id="heroVideo" class="demo-vid" autoplay loop muted playsinline preload="auto" aria-label="Infographic design demo">
-          <source src="infographic-demo.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="video" id="video2">
-        <video id="paletteVideo" class="demo-vid" autoplay loop muted playsinline preload="auto" aria-label="Colour palette demo">
-          <source src="palette.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </div>
+<div class="hero"><video id="hv" src="assets/hero.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+<img class="ghost neg" src="" alt="" style="right:-6%;top:6%;opacity:.4"><div class="wrap"><h1></h1>
+<p>AntVisual Designs is a design studio for branding, websites, decks, infographics and social design. Led by Prathamesh, with one senior designer on every brief and 17 years behind the work.</p>
+<div class="row"><a class="btn" href="#contact">Start a project</a><a class="btn ghost" href="#ant">What is an Ant?</a></div></div>
+<button class="btn ghost" id="pp" type="button" aria-label="Pause background video"></button></div>
 
-  <section id="work"><div class="w">
-    <div class="sh"><h2>Selected work</h2><p>Projects across identity, web and communication design. Full case studies are added as each engagement completes.</p></div>
-    <div class="proj">
-      <div class="tile"><div class="img"><img src="website.jpeg" alt="Brand identity and logo design projects" loading="lazy" decoding="async"></div><h3>Branding</h3><span>Identity design for modern enterprises</span></div>
-      <div class="tile"><div class="img"><img src="branding.jpeg" alt="Website design project examples" loading="lazy" decoding="async"></div><h3>Websites</h3><span>Design and strategy for digital presence</span></div>
-      <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0a0a0a"/><circle cx="120" cy="150" r="60" fill="#f08aa6"/><circle cx="280" cy="150" r="60" fill="#7cc4f4"/></svg></div><h3>Infographics</h3><span>Complex data made visual and clear</span></div>
-      <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#E89A0C"/><rect x="30" y="70" width="120" height="160" fill="#fff"/><rect x="250" y="70" width="120" height="160" fill="#fff"/></svg></div><h3>Decks</h3><span>Pitch and presentation design</span></div>
-      <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#d9dde3"/><rect x="90" y="50" width="220" height="200" rx="20" fill="#fff"/></svg></div><h3>Social design</h3><span>Creative content for every platform</span></div>
-      <div class="tile"><div class="img"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#efe7d8"/><rect x="40" y="60" width="100" height="180" fill="#b9a7f5"/><rect x="160" y="80" width="100" height="160" fill="#7fe7c4"/><rect x="280" y="100" width="80" height="140" fill="#ffe27a"/></svg></div><h3>Visual systems</h3><span>Cohesive design across touchpoints</span></div>
-    </div>
-  </div></section>
+<section class="reel" aria-label="Showreel"><div class="stage"><video id="rv" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="auto" aria-label="Showreel of poster, mailer and collateral design by AntVisual Designs"></video></div>
+<div style="padding:0 0 70px"><div class="wrap row2" style="background:transparent;padding:0 24px 0"><h2 class="h2" style="max-width:12ch">The work, in motion.</h2><a class="rcap" id="rc" href="https://www.behance.net/gallery/254877089/Design-Principal-Poster-Design" target="_blank" rel="noopener"><b>Design Principal Poster</b><span>View on Behance</span></a></div></div></section>
+<section class="pfs" id="pfs" aria-label="Behance portfolio"><div class="pin"><video class="bgv mul" src="" autoplay muted loop playsinline aria-hidden="true" style="opacity:.1"></video><img class="ghost mul" src="" alt="" style="left:-120px;top:-40px;opacity:.45"><div class="track" id="trk">
+<div class="pnl"><h2 class="h2 mk"><span>From the Behance portfolio</span></h2><p class="lede">Posters, mailers and campaign banners by Prathamesh, from 17 years in senior visual and interaction design. Keep scrolling to move across the work.</p></div>
+<a class="pc" href="https://www.behance.net/prathmeshmungi" target="_blank" rel="noopener"><img class="" data-a="dun" alt="Dunzo: Product teardown session poster"><div class="cap"><b>Dunzo</b><span></span></div></a><a class="pc" href="https://www.behance.net/prathmeshmungi" target="_blank" rel="noopener"><img class="" data-a="net" alt="Netflix: From Blockbuster to Streaming Giant poster"><div class="cap"><b>Netflix</b><span></span></div></a><a class="pc" href="https://www.behance.net/gallery/75491179/100-Cashback-Mailer-Design" target="_blank" rel="noopener"><img class="pan" data-a="mail" alt="FirstCry: 100% Cashback mailer, top to bottom"><div class="cap"><b>FirstCry</b><span></span></div></a><a class="pc wide" href="https://www.behance.net/prathmeshmungi" target="_blank" rel="noopener"><img class="" data-a="ban" alt="FirstCry: Extra 50% cashback banner"><div class="cap"><b>FirstCry</b><span></span></div></a>
+<div class="more"><h3>More on Behance</h3><ul><li><a href="https://www.behance.net/gallery/254877355/Poster-Design" target="_blank" rel="noopener"><b>Poster Design</b><span>Poster</span></a></li><li><a href="https://www.behance.net/gallery/254876933/Product-Poster-Design" target="_blank" rel="noopener"><b>Product</b><span>Poster</span></a></li><li><a href="https://www.behance.net/gallery/252806577/VanYatra" target="_blank" rel="noopener"><b>VanYatra</b><span>Website</span></a></li><li><a href="https://www.behance.net/gallery/65045267/Party-Wear-Celebrations" target="_blank" rel="noopener"><b>Party Wear</b><span>Fashion campaign</span></a></li><li><a href="https://www.behance.net/gallery/64951181/Holiday-Fashion" target="_blank" rel="noopener"><b>Holiday Fashion</b><span>Fashion campaign</span></a></li><li><a href="https://www.behance.net/gallery/65039467/Summer-Fashion" target="_blank" rel="noopener"><b>Summer Fashion</b><span>Fashion campaign</span></a></li><li><a href="https://www.behance.net/gallery/73809501/Craftsvilla-App-Flow" target="_blank" rel="noopener"><b>Craftsvilla App Flow</b><span>App design</span></a></li><li><a href="https://www.behance.net/gallery/75491179/100-Cashback-Mailer-Design" target="_blank" rel="noopener"><b>100% Cashback Mailer</b><span>Mailer design</span></a></li><li><a href="https://www.behance.net/gallery/245517173/Design-Journey" target="_blank" rel="noopener"><b>Design Journey</b><span>Design story</span></a></li></ul><a class="btn" href="https://www.behance.net/prathmeshmungi" target="_blank" rel="noopener">Open the full profile</a></div>
+</div><div class="pbar" aria-hidden="true"><i id="pbar"></i></div></div></section>
+<section class="where"><video class="bgv scr" src="assets/white1.mp4" autoplay muted loop playsinline aria-hidden="true" style="opacity: 0.8;"></video><img class="ghost neg" src="" alt="" style="left:25%;bottom:30%;opacity:1"><div class="wrap"><h2 class="h2 mk"><span>Where we work</span></h2>
+<p class="lede">The core craft sits in the centre. The outer rings are support we bring in when a project needs it.</p>
+<div class="orbit" id="orbit"><i class="rg r1"></i><i class="rg r2"></i><div class="cr"><span>Identity</span><span>Communication</span><span>Infographics</span></div><ul class="orb" id="o1"><li style="--a:0deg;--r:23.5">Branding</li><li style="--a:60deg;--r:23.5">Logo design</li><li style="--a:120deg;--r:23.5">Website design</li><li style="--a:180deg;--r:23.5">Company decks</li><li style="--a:240deg;--r:23.5">Social creatives</li><li style="--a:300deg;--r:23.5">App design</li></ul><ul class="orb" id="o2"><li style="--a:22.5deg;--r:39">Brochure design</li><li style="--a:67.5deg;--r:39">Banner design</li><li style="--a:112.5deg;--r:39">Print-ready files</li><li style="--a:157.5deg;--r:39">Video editing</li><li style="--a:202.5deg;--r:39">Advertising creatives</li><li style="--a:247.5deg;--r:39">Marketing creatives</li><li style="--a:292.5deg;--r:39">Graphic design</li><li style="--a:337.5deg;--r:39">Visual design</li></ul></div></div></section>
 
-  <section id="scope"><div class="w">
-    <div class="sh"><h2>Where we work</h2><p>The core craft sits in the centre. The outer ring is support we bring in when a project needs it.</p></div>
-    <div class="map">
-      <svg viewBox="0 0 1000 480" aria-hidden="true"><circle cx="500" cy="240" r="232" fill="none" stroke="currentColor" stroke-dasharray="4 5" opacity=".55"/><circle cx="500" cy="240" r="140" fill="none" stroke="currentColor" stroke-dasharray="4 5" opacity=".35"/></svg>
-      <span class="ax l">Identity</span><span class="ax r">Communication</span>
-      <span class="pl core" style="--x:50.0%;--y:31.25%;--c:#E89A0C"><i></i>Infographics</span>
-      <span class="pl core" style="--x:38.5%;--y:43.75%;--c:#7cc4f4"><i></i>Branding</span>
-      <span class="pl core" style="--x:62.0%;--y:43.75%;--c:#8fe29b"><i></i>Website design</span>
-      <span class="pl core" style="--x:40.0%;--y:57.92%;--c:#f08aa6"><i></i>Logo design</span>
-      <span class="pl core" style="--x:61.2%;--y:57.92%;--c:#b9a7f5"><i></i>Company decks</span>
-      <span class="pl core" style="--x:42.5%;--y:71.88%;--c:#ffe27a"><i></i>Social creatives</span>
-      <span class="pl core" style="--x:59.2%;--y:71.88%;--c:#7fe7c4"><i></i>App design</span>
-      <span class="pl far" style="--x:23.5%;--y:31.25%">Brochure design</span>
-      <span class="pl far" style="--x:17.2%;--y:42.71%">Banner design</span>
-      <span class="pl far" style="--x:14.0%;--y:60.00%">Print-ready files</span>
-      <span class="pl far" style="--x:21.5%;--y:71.88%">Video editing</span>
-      <span class="pl far" style="--x:77.0%;--y:31.25%">Advertising creatives</span>
-      <span class="pl far" style="--x:84.2%;--y:42.71%">Marketing creatives</span>
-      <span class="pl far" style="--x:86.0%;--y:60.00%">Graphic design</span>
-      <span class="pl far" style="--x:79.0%;--y:71.88%">Visual design</span>
-    </div>
-  </div></section>
+<section id="services"><video class="bgv mul" src="" autoplay muted loop playsinline aria-hidden="true" style="opacity:.22"></video><div class="wrap"><h2 class="h2 mk"><span>Services</span></h2>
+<p class="lede">Ten disciplines, one point of contact, no account layer between you and the designer.</p>
+<div class="svc"><div class="list" id="svl"><div class="item"><h3>Branding</h3><p>Positioning, identity and guidelines that hold up in every application.</p></div><div class="item"><h3>Logo design</h3><p>Marks built from the business, tested at every size.</p></div><div class="item"><h3>Website design</h3><p>Marketing and portfolio sites that turn a visit into an enquiry.</p></div><div class="item"><h3>Company decks</h3><p>Pitch, sales and board decks, structured to argue one point per slide.</p></div><div class="item"><h3>App design</h3><p>Visual interface design for product teams, without a full UX engagement.</p></div><div class="item"><h3>Social media creatives</h3><p>Posts, carousels and campaign sets a small team can keep running.</p></div><div class="item"><div><h3>Infographics</h3><em>Our strongest craft</em></div><p>Complex data and processes turned into one clear visual.</p></div><div class="item"><h3>Advertising and marketing creatives</h3><p>Banners, ads and campaign visuals built to get a message noticed.</p></div><div class="item"><h3>Visual design</h3><p>A consistent look across every touchpoint, from first page to final file.</p></div><div class="item"><h3>Graphic design</h3><p>Brochures, banners, print and digital collateral, finished to a professional standard.</p></div></div><div class="sticky"><div class="st" id="stg"><figure class=on><img class="" data-a="brand" alt="Identity sheets: marks, colour and type"><figcaption>Identity sheets: marks, colour and type</figcaption></figure><figure><video loop playsinline preload="metadata" class="" data-a="gem" aria-hidden="true"></video><figcaption>The AntVisual mark, animated</figcaption></figure><figure><img class="" data-a="web" alt="Website and app screens"><figcaption>Website and app screens</figcaption></figure><figure><video loop playsinline preload="metadata" class="" data-a="pal" aria-hidden="true"></video><figcaption>Presentation explainer: colour and contrast</figcaption></figure><figure><img class="app" data-a="web" alt="App interface screens"><figcaption>App interface screens</figcaption></figure><figure><img class="" data-a="dun" alt="Poster for a product community session"><figcaption>Poster for a product community session</figcaption></figure><figure><video loop playsinline preload="metadata" class="" data-a="info" aria-hidden="true"></video><figcaption>One layout reduced to a single focal point</figcaption></figure><figure><img class="pan" data-a="mail" alt="A cashback mailer, scrolled top to bottom"><figcaption>A cashback mailer, scrolled top to bottom</figcaption></figure><figure><img class="" data-a="net" alt="Event poster built from a collage of stills"><figcaption>Event poster built from a collage of stills</figcaption></figure><figure><img class="" data-a="ban" alt="Campaign banner: 50% cashback"><figcaption>Campaign banner: 50% cashback</figcaption></figure></div></div></div></div></section>
 
-  <section id="services"><div class="w">
-    <div class="sh"><h2>Services</h2><p>Ten disciplines, one point of contact, no account layer between you and the designer.</p></div>
-    <div class="grid g2">
-      <div class="cell"><h3>Branding</h3><p>Positioning, identity and guidelines that hold up in every application.</p></div>
-      <div class="cell"><h3>Logo design</h3><p>Marks built from the business, tested at every size.</p></div>
-      <div class="cell"><h3>Website design</h3><p>Marketing and portfolio sites that turn a visit into an enquiry.</p></div>
-      <div class="cell"><h3>Company decks</h3><p>Pitch, sales and board decks, structured to argue one point per slide.</p></div>
-      <div class="cell"><h3>App design</h3><p>Visual interface design for product teams, without a full UX engagement.</p></div>
-      <div class="cell"><h3>Social media creatives</h3><p>Posts, carousels and campaign sets a small team can keep running.</p></div>
-      <div class="cell"><h3>Infographics</h3><p>Complex data and processes turned into one clear visual. Our strongest craft.</p></div>
-      <div class="cell"><h3>Advertising and marketing creatives</h3><p>Banners, ads and campaign visuals built to get a message noticed.</p></div>
-      <div class="cell"><h3>Visual design</h3><p>A consistent look across every touchpoint, from first page to final file.</p></div>
-      <div class="cell"><h3>Graphic design</h3><p>Brochures, banners, print and digital collateral, finished to a professional standard.</p></div>
-    </div>
-  </div></section>
-</div>
+<section class="ant" id="ant"><img class="ghost mul" src="assets/butterflies.gif" alt="" style="left:-10%;top:-15%;opacity:.35;width:min(820px,100vw)"><div class="wrap"><div class="grid"><div><h2 class="h2">What is an Ant?</h2>
+<p style="margin-top:20px">An ant carries many times its own weight, follows a clear path and works as part of a system. Our design works the same way: small, precise parts that carry a lot.</p>
+<div class="vid"><video src="assets/palette.mp4" controls muted loop playsinline preload="metadata" aria-label="Design fundamentals: the impact of color in UI design"></video><span>Design fundamentals in minutes</span></div></div>
+<img class="g" src="assets/butterflies.gif" alt="Illustration of a face with butterflies in place of hair"></div></div></section>
 
-<div class="view" id="v-ant">
-  <div class="w hero" style="padding-bottom:24px">
-    <h1>Ant?</h1>
-    <p>Small, organised and stronger than it looks. AntVisual Designs is a design studio built on that idea: disciplined process, shared effort and work that carries real weight for the business.</p>
-    <div class="stats">
-      <div><b>17</b><span>Years in visual design</span></div>
-      <div><b>8</b><span>Largest team led</span></div>
-      <div><b>1</b><span>Senior designer on every brief</span></div>
-    </div>
-  </div>
-
-  <section><div class="w">
-    <div class="sh"><h2>Our values</h2><p>How the studio works, whatever the project.</p></div>
-    <div class="grid">
-      <div class="cell"><h3>Craft</h3><p>Seventeen years of repetition. Details get fixed, not forgiven.</p></div>
-      <div class="cell"><h3>Clarity</h3><p>Every layout, slide and logo has one job and does it plainly.</p></div>
-      <div class="cell"><h3>Reliability</h3><p>Deadlines, files and promises arrive when they were meant to.</p></div>
-      <div class="cell"><h3>Teamwork</h3><p>Having led teams of up to eight, we know good work is a shared effort.</p></div>
-      <div class="cell"><h3>Resourcefulness</h3><p>Tight budget or short timeline, we find the route that still works.</p></div>
-      <div class="cell"><h3>Honesty</h3><p>We say what will and will not work before the invoice, not after.</p></div>
-    </div>
-  </div></section>
-
-  <section><div class="w">
-    <div class="sh"><h2>Capabilities</h2><p>Four ways clients usually work with AntVisual.</p></div>
-    <div class="cap4">
-      <div class="card"><h4>Launch a brand</h4><p>Build identity from the ground up.</p><ul><li>Positioning and name support</li><li>Logo and visual identity</li><li>Brand guidelines</li><li>Stationery and collateral</li></ul></div>
-      <div class="card"><h4>Refresh and reposition</h4><p>Update what no longer fits.</p><ul><li>Brand audit</li><li>Identity refresh</li><li>Website redesign</li><li>Rollout assets</li></ul></div>
-      <div class="card"><h4>Sales and pitch material</h4><p>Make the argument visible.</p><ul><li>Business presentation decks</li><li>Infographics</li><li>Brochures and banners</li><li>Training visuals</li></ul></div>
-      <div class="card"><h4>Ongoing design support</h4><p>A senior designer on call.</p><ul><li>Social media systems</li><li>Marketing design</li><li>Web updates</li><li>Team mentoring</li></ul></div>
-    </div>
-  </div></section>
-
-  <section><div class="w">
-    <div class="sh"><h2>Leadership</h2><p>A founder directly involved in every project.</p></div>
-    <div class="lead">
-      <div class="ph">Founder photo goes here</div>
-      <div><h3>Prathamesh</h3><p>Founder and Creative Lead, Senior Visual Designer. Seventeen years across branding, web, decks and campaigns, including leading design teams of five to eight people at top-tier studios.</p></div>
-    </div>
-  </div></section>
-</div>
-
-<section class="cta" id="contact" style="padding-bottom:80px"><div class="w">
-  <img class="cta-logo" src="logo.png" alt="AntVisual Designs logo">
-  <h2>Let's talk.</h2>
-  <div class="contact">
-    <div>
-      <p class="lead2">Tell us what you're building and what it needs to do. We reply with next steps, not a sales call.</p>
-      <div class="row"><a class="btn" href="mailto:prathamesh@antvisual.com">prathamesh@antvisual.com</a><a class="btn o" href="tel:+919822168057">+91 98221 68057</a></div>
-    </div>
-    <form class="enq" id="enq">
-      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
-      <label>Name<input name="name" autocomplete="name" maxlength="120" required></label>
-      <label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
-      <label>What do you need?<select name="need"><option>Branding</option><option>Logo design</option><option>Website design</option><option>Company deck</option><option>Social media creatives</option><option>Infographics</option><option>Other</option></select></label>
-      <label>Project details<textarea name="message" maxlength="2000" required></textarea></label>
-      <button class="btn" type="submit">Send enquiry</button>
-      <p id="fmsg" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-  <div class="fine"><span>© AntVisual Designs · Pune, India</span><span><a href="#" data-go="home">Home</a> &nbsp;·&nbsp; <a href="#" data-go="ant">Ant?</a></span></div>
-</div></section>
+<section class="contact" id="contact"><video class="bgv mul" src="" autoplay muted loop playsinline aria-hidden="true" style="opacity:.45"></video><img class="ghost mul" src="assets/butterflies.gif" alt="" style="left:0%;bottom:-25%;opacity:.2"><div class="wrap"><div class="grid"><div><h2 class="h2">Let’s talk.</h2>
+<p class="lede">Tell us what you’re building and what it needs to do. We reply with next steps, not a sales call.</p>
+<a class="m" href="mailto:prathamesh@antvisual.com">prathamesh@antvisual.com</a><a class="m" href="tel:+919822168057">+91 98221 68057</a></div>
+<form id="f"><label>Name<input name="n" required autocomplete="name"></label><label>Email<input type="email" name="e" required autocomplete="email"></label>
+<label>What do you need?<select name="t"><option>Branding</option><option>Logo design</option><option>Website design</option><option>Company deck</option><option>Social media creatives</option><option>Infographics</option><option>Other</option></select></label>
+<label>Project details<textarea name="d" rows="6"></textarea></label><button class="btn" type="submit">Send enquiry</button></form></div></div></section>
 </main>
-
+<footer><div class="wrap"><span>© AntVisual Designs, Pune, India</span><span><a href="#top">Home</a> · <a href="#ant">Ant?</a></span></div></footer>
 <script>
+var hv=document.getElementById('hv'),pp=document.getElementById('pp'),vids=[].slice.call(document.querySelectorAll('video[autoplay]'));
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function setP(p){vids.forEach(function(v){p?v.pause():v.play().catch(function(){})});pp.textContent=p?'Play':'Pause';pp.setAttribute('aria-label',p?'Play background video':'Pause background video');pp.dataset.p=p?1:0}
+if(rm)setP(true);
+pp.onclick=function(){setP(pp.dataset.p!=='1')};
+document.getElementById('f').onsubmit=function(ev){ev.preventDefault();var d=new FormData(ev.target);
+var b='Name: '+d.get('n')+'\nEmail: '+d.get('e')+'\nNeed: '+d.get('t')+'\n\n'+d.get('d');
+location.href='mailto:prathamesh@antvisual.com?subject='+encodeURIComponent('Project enquiry: '+d.get('t'))+'&body='+encodeURIComponent(b)};
+
+var io=document.getElementById('intro'),iv=document.getElementById('iv'),lg=document.getElementById('il'),hl=document.getElementById('ih'),hdr=document.querySelector('header'),hd=hdr.querySelector('img');
+function cl(x){return Math.max(0,Math.min(1,x))}
+function endIntro(){if(!io||io.dataset.done)return;io.dataset.done=1;document.body.classList.remove('intro');hdr.classList.add('ready');io.classList.add('out');setTimeout(function(){io.remove()},1100)}
+function tick(){if(io.dataset.done||iv.ended)return;var t=iv.currentTime,e=1-Math.pow(1-cl((t-7.7)/1.4),3);
+lg.style.opacity=cl((t-7.9)/.8);lg.style.transform='scale('+(1.14-.14*e).toFixed(3)+')';
+lg.style.filter='blur('+((1-e)*18).toFixed(1)+'px) drop-shadow(0 0 '+((1-e)*26).toFixed(1)+'px rgba(0,214,255,'+(1-e).toFixed(2)+'))';
+hl.style.opacity=(cl(1-Math.abs(t-8.1)/1.3)*.9).toFixed(2);requestAnimationFrame(tick)}
+function fly(){if(io.dataset.done)return;io.dataset.done=1;lg.style.transition='none';lg.style.opacity=1;lg.style.filter='none';lg.style.transform='none';hl.style.opacity=0;
+var a=lg.getBoundingClientRect(),b=hd.getBoundingClientRect(),s=b.width/a.width,dx=b.left+b.width/2-a.left-a.width/2,dy=b.top+b.height/2-a.top-a.height/2;
+document.body.classList.remove('intro');io.classList.add('fly');void lg.offsetWidth;
+lg.style.transition='transform 1s cubic-bezier(.7,0,.2,1),filter 1s';lg.style.transform='translate('+dx+'px,'+dy+'px) scale('+s+')';lg.style.filter='invert(1)';
+setTimeout(function(){hdr.classList.add('ready');io.remove()},1050)}
+if(rm){endIntro()}else{iv.addEventListener('ended',function(){setTimeout(fly,550)});iv.addEventListener('error',endIntro);document.getElementById('skip').onclick=endIntro;
+var pr=iv.play();if(pr&&pr.then)pr.then(function(){requestAnimationFrame(tick)},endIntro)}
+
+var rv=document.getElementById('rv'),rc=document.getElementById('rc'),rcs=[[0,'Design Principal Poster','254877089/Design-Principal-Poster-Design'],[2.2,'Product Poster','254876933/Product-Poster-Design'],[3.7,'100% Cashback Mailer','75491179/100-Cashback-Mailer-Design'],[5.2,'One system, every format','']],rci=0;
+function setCap(i){if(i===rci)return;rci=i;var c=rcs[i];rc.querySelector('b').textContent=c[1];rc.querySelector('span').textContent=c[2]?'View on Behance':'See all work on Behance';
+rc.href=c[2]?'https://www.behance.net/gallery/'+c[2]:'https://www.behance.net/prathmeshmungi';rc.classList.remove('sw');void rc.offsetWidth;rc.classList.add('sw')}
+rv.addEventListener('timeupdate',function(){var t=rv.currentTime,i=0;for(var k=0;k<rcs.length;k++)if(t>=rcs[k][0])i=k;setCap(i)});
+if('IntersectionObserver' in window&&!rm){new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&pp.dataset.p!=='1')rv.play().catch(function(){});else rv.pause()})},{threshold:.25}).observe(rv)}
+var _sp=setP;setP=function(p){_sp(p);if(p)rv.pause();else if(rv.getBoundingClientRect().bottom>0&&rv.getBoundingClientRect().top<innerHeight)rv.play().catch(function(){})};
+
+/* ---- scroll, services stage, orbit, portfolio pin ---- */
 (function(){
-  var views={home:document.getElementById('v-home'),ant:document.getElementById('v-ant')};
-  function show(name,to){
-    for(var k in views)views[k].classList.toggle('on',k===name);
-    document.getElementById('navant').classList.toggle('on',name==='ant');
-    if(to){var el=document.getElementById(to);if(el)el.scrollIntoView({behavior:'smooth'})}
-    else window.scrollTo({top:0});
-  }
-  document.addEventListener('click',function(e){
-    var a=e.target.closest('[data-go]');if(!a)return;
-    e.preventDefault();show(a.dataset.go,a.dataset.to);
-  });
+var ID=function(i){return document.getElementById(i)};
+var A={dun:"assets/dunzo-poster.jpg",net:"assets/netflix-poster.jpg",mail:"assets/firstcry-mailer.jpg",ban:"assets/firstcry-banner.jpg",brand:"assets/branding.jpg",web:"assets/websites.jpg",info:"assets/infographic.mp4",pal:"assets/palette.mp4",gem:"assets/logo-reveal.mp4"};
+[].forEach.call(document.querySelectorAll('[data-a]'),function(e){e.src=A[e.dataset.a];if(e.tagName==='VIDEO')e.muted=true});
+var figs=[].slice.call(document.querySelectorAll('#stg figure')),its=[].slice.call(document.querySelectorAll('#svl .item')),cur=-1;
+function show(i){if(i===cur)return;cur=i;figs.forEach(function(f,k){f.classList.toggle('on',k===i);var v=f.querySelector('video');if(v){if(k===i&&!rm&&pp.dataset.p!=='1')v.play().catch(function(){});else v.pause()}});its.forEach(function(e,k){e.classList.toggle('on',k===i)})}
+var sio=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)show(its.indexOf(e.target))})},{rootMargin:'-48% 0px -42% 0px'});
+its.forEach(function(e,k){e.tabIndex=0;sio.observe(e);e.addEventListener('mouseenter',function(){if(matchMedia('(hover:hover)').matches)show(k)});e.addEventListener('focus',function(){show(k)})});show(0);
+var mio=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');mio.unobserve(e.target)}})},{threshold:.35});
+[].forEach.call(document.querySelectorAll('.mk'),function(e){mio.observe(e)});
+var pfs=ID('pfs'),trk=ID('trk'),pbar=ID('pbar'),sp=ID('sp'),oc=ID('orbit'),o1=ID('o1'),o2=ID('o2'),mq=matchMedia('(min-width:821px) and (prefers-reduced-motion:no-preference)');
+function sizePin(){if(mq.matches)pfs.style.height=(trk.scrollWidth-innerWidth+innerHeight)+'px';else{pfs.style.height='';trk.style.transform=''}}
+function frame(){var m=document.documentElement.scrollHeight-innerHeight;sp.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';
+if(mq.matches){var r=pfs.getBoundingClientRect(),mx=pfs.offsetHeight-innerHeight,p=mx>0?cl(-r.top/mx):0;trk.style.transform='translate3d('+(-p*(trk.scrollWidth-innerWidth)).toFixed(1)+'px,0,0)';pbar.style.transform='scaleX('+p.toFixed(3)+')'}
+if(!rm){var o=oc.getBoundingClientRect(),q=innerHeight/2-(o.top+o.height/2);o1.style.setProperty('--rot',(q*.06).toFixed(2)+'deg');o2.style.setProperty('--rot',(-q*.04).toFixed(2)+'deg')}}
+var tk=0;function onS(){if(tk)return;tk=1;requestAnimationFrame(function(){tk=0;frame()})}
+addEventListener('scroll',onS,{passive:true});addEventListener('resize',function(){sizePin();onS()});addEventListener('load',function(){sizePin();onS()});(mq.addEventListener?mq.addEventListener('change',function(){sizePin();onS()}):mq.addListener(function(){sizePin();onS()}));sizePin();onS();
 })();
-
-/* ------------------------------------------------------------------
-   HERO VIDEO (fixed)
-   Root causes of the old desktop-Safari bug:
-   1. The script treated "prefers-reduced-motion" as "never play" and
-      called v.pause(). Desktop macOS often has Reduce Motion on (or
-      Safari reports it), phones usually don't, so only desktop broke.
-   2. The video had no `muted` attribute in HTML and the script forced
-      v.muted=false. Safari desktop blocks autoplay with sound, so the
-      first play() was rejected. Any later click (Work, Services...)
-      counted as a user gesture, which is why it suddenly started.
-   3. Nothing retried play() after a failure, a refresh (bfcache),
-      tab switch, or when the video scrolled back into view.
-   Fix: always muted, always attempt play, retry on every sensible
-   event, and give people a visible Pause/Play button.
-------------------------------------------------------------------- */
-(function(){
-  var v=document.getElementById('heroMain');
-  var fb=document.getElementById('heroMainFallback');
-  var ctl=document.getElementById('heroCtl');
-  if(!v)return;
-
-  var userPaused=false;
-  var fbText=fb?fb.querySelector('span'):null;
-
-  function setFb(show,msg){
-    if(!fb)return;
-    fb.classList.toggle('visible',!!show);
-    if(msg&&fbText)fbText.textContent=msg;
-  }
-  function setCtl(playing){
-    if(!ctl)return;
-    ctl.hidden=false;
-    ctl.textContent=playing?'Pause':'Play';
-    ctl.setAttribute('aria-label',playing?'Pause hero video':'Play hero video');
-  }
-
-  function forceMuted(){
-    v.muted=true;
-    v.defaultMuted=true;
-    v.setAttribute('muted','');
-    v.setAttribute('playsinline','');
-    v.setAttribute('webkit-playsinline','');
-  }
-
-  function tryPlay(){
-    if(userPaused)return;
-    forceMuted();
-    var p;
-    try{p=v.play();}catch(e){p=null;}
-    if(p&&typeof p.then==='function'){
-      p.then(function(){setFb(false);setCtl(true);})
-       .catch(function(){
-         // Autoplay blocked: show a clickable overlay, retry on first gesture
-         setFb(true,'Click to play');
-         setCtl(false);
-       });
-    }
-  }
-
-  // Retry on first real user interaction (browsers allow play() then)
-  var gestureEvents=['pointerdown','mousedown','touchstart','keydown','wheel','scroll'];
-  function onGesture(){
-    if(!userPaused&&v.paused)tryPlay();
-    if(!v.paused){
-      gestureEvents.forEach(function(ev){window.removeEventListener(ev,onGesture,true);});
-    }
-  }
-  gestureEvents.forEach(function(ev){window.addEventListener(ev,onGesture,{capture:true,passive:true});});
-
-  // Video element events
-  v.addEventListener('playing',function(){setFb(false);setCtl(true);});
-  v.addEventListener('pause',function(){if(!v.ended)setCtl(false);});
-  v.addEventListener('loadeddata',tryPlay);
-  v.addEventListener('canplay',function(){if(v.paused)tryPlay();});
-  v.addEventListener('stalled',function(){if(v.paused)tryPlay();});
-  v.addEventListener('error',function(){setFb(true,'Preview unavailable');});
-  v.addEventListener('ended',function(){v.currentTime=0;tryPlay();}); // safety net if loop is ignored
-
-  // Pause / play button (accessibility: user always has control)
-  if(ctl){
-    ctl.addEventListener('click',function(){
-      if(v.paused){userPaused=false;tryPlay();}
-      else{userPaused=true;v.pause();}
-    });
-  }
-  // Clicking the overlay starts the video
-  if(fb){
-    var startFromOverlay=function(){userPaused=false;tryPlay();};
-    fb.addEventListener('click',startFromOverlay);
-    fb.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){e.preventDefault();startFromOverlay();}
-    });
-  }
-
-  // Resume when the tab becomes visible again
-  document.addEventListener('visibilitychange',function(){
-    if(!document.hidden&&v.paused)tryPlay();
-  });
-  // Refresh / back-forward cache (Safari restores pages without re-running scripts)
-  window.addEventListener('pageshow',function(){if(v.paused)tryPlay();});
-  window.addEventListener('focus',function(){if(v.paused)tryPlay();});
-
-  // Resume when scrolled back into view (Safari may pause offscreen videos)
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting&&v.paused)tryPlay();
-      });
-    },{threshold:.25}).observe(v);
-  }
-
-  // Kick things off now, and once more after full load
-  if(v.readyState<2)v.load();
-  tryPlay();
-  window.addEventListener('load',function(){if(v.paused)tryPlay();});
-  // If it is already playing by the time this runs
-  if(!v.paused){setFb(false);setCtl(true);}
-})();
-
-/* Autoplay safety for the two demo videos (muted, retry on gesture/visibility) */
-(function(){
-  var vids=[].slice.call(document.querySelectorAll('.demo-vid'));
-  vids.forEach(function(v){
-    v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');
-    function go(){
-      if(!v.paused)return;
-      v.muted=true;
-      var p;try{p=v.play();}catch(e){}
-      if(p&&p.catch)p.catch(function(){});
-    }
-    v.addEventListener('loadeddata',go);
-    v.addEventListener('canplay',go);
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)go();});},{threshold:.25}).observe(v);
-    }
-    ['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){
-      window.addEventListener(ev,go,{once:true,passive:true,capture:true});
-    });
-    document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
-    window.addEventListener('pageshow',go);
-    go();
-  });
-})();
-
-(function(){
-  var SHEET_URL='https://script.google.com/macros/s/AKfycbzoub4zRbPHBgY9c1d--2OprrOZUF-_NGyTL9RvZK7nxdMId1fcHFWOmPjyD6uAuzYvng/exec';
-  var f=document.getElementById('enq'),msg=document.getElementById('fmsg'),btn=f.querySelector('button');
-
-  function makeId(){
-    if(window.crypto&&typeof window.crypto.randomUUID==='function'){
-      return window.crypto.randomUUID().replace(/-/g,'');
-    }
-    return 'av'+Date.now().toString(36)+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
-  }
-
-  function showEmailFallback(message){
-    msg.textContent=message+' ';
-    var link=document.createElement('a');
-    link.href='mailto:prathamesh@antvisual.com';
-    link.textContent='Email us directly';
-    msg.appendChild(link);
-    btn.disabled=false;
-  }
-
-  function confirmSaved(id,email){
-    f.reset();
-    msg.textContent='Thank you. Your enquiry was saved and we will reply to '+email+'.';
-    btn.disabled=false;
-  }
-
-  function confirmReceipt(id,email){
-    var startedAt=Date.now(),attempt=0,script=null,callbackName='',pollTimer=null,scriptTimer=null,finished=false;
-    function removeAttempt(){
-      if(script){
-        script.onerror=null;
-        if(script.parentNode)script.parentNode.removeChild(script);
-        script=null;
-      }
-      if(callbackName){
-        try{delete window[callbackName]}catch(ignore){}
-        callbackName='';
-      }
-      if(scriptTimer){clearTimeout(scriptTimer);scriptTimer=null}
-    }
-    function finishSaved(){
-      if(finished)return;
-      finished=true;
-      if(pollTimer)clearTimeout(pollTimer);
-      removeAttempt();
-      confirmSaved(id,email);
-    }
-    function finishUnconfirmed(){
-      if(finished)return;
-      finished=true;
-      if(pollTimer)clearTimeout(pollTimer);
-      removeAttempt();
-      showEmailFallback('We could not confirm that your enquiry reached the sheet. Your message is still in the form.');
-    }
-    function check(){
-      if(finished)return;
-      if(Date.now()-startedAt>=25000){finishUnconfirmed();return}
-      attempt+=1;
-      var thisCallback='antVisualReceipt_'+id+'_'+attempt;
-      callbackName=thisCallback;
-      script=document.createElement('script');
-      script.async=true;
-      window[thisCallback]=function(receipt){
-        if(finished||callbackName!==thisCallback)return;
-        removeAttempt();
-        if(receipt&&receipt.status==='saved'){finishSaved();return}
-        if(receipt&&receipt.status==='failed'){finishUnconfirmed();return}
-        pollTimer=setTimeout(check,1200);
-      };
-      script.onerror=function(){
-        if(finished||callbackName!==thisCallback)return;
-        removeAttempt();
-        pollTimer=setTimeout(check,1500);
-      };
-      var separator=SHEET_URL.indexOf('?')===-1?'?':'&';
-      script.src=SHEET_URL+separator+'action=status&id='+encodeURIComponent(id)+'&callback='+encodeURIComponent(thisCallback)+'&_='+Date.now();
-      scriptTimer=setTimeout(function(){
-        if(finished||callbackName!==thisCallback)return;
-        removeAttempt();
-        pollTimer=setTimeout(check,1500);
-      },6000);
-      document.head.appendChild(script);
-    }
-    check();
-  }
-
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var fields=f.elements;
-    var d={
-      id:makeId(),
-      name:fields.namedItem('name').value.trim(),
-      email:fields.namedItem('email').value.trim(),
-      need:fields.namedItem('need').value.trim(),
-      message:fields.namedItem('message').value.trim(),
-      website:fields.namedItem('website').value.trim()
-    };
-    if(!d.name||!/\S+@\S+\.\S+$/.test(d.email)||!d.need||!d.message){
-      msg.textContent='Add your name, a valid email and a few project details.';
-      return;
-    }
-    if(!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec(?:\?.*)?$/.test(SHEET_URL)){
-      showEmailFallback('The contact form is not connected yet. Your message is still in the form.');
-      return;
-    }
-
-    btn.disabled=true;msg.textContent='Sending...';
-    fetch(SHEET_URL,{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify(d)
-    }).then(function(){
-      confirmReceipt(d.id,d.email);
-    }).catch(function(){
-      showEmailFallback('The enquiry could not be sent. Your message is still in the form.');
-    });
-  });
-})();
-</script>
-</body>
-</html>
-
+</script></body></html>
