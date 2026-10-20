@@ -29,7 +29,8 @@ header {
     align-items: center;
     background: #000000;
     color: #f1f1ea;
-}header img{height:30px;filter:invert(1);display:block}
+}
+header img{height:30px;filter:invert(1);display:block}
 nav{display:flex;gap:26px;font-weight:500;font-size:15px}
 nav a{text-decoration:none;opacity:.85}nav a:hover{opacity:1;color:var(--lime)}
 .hero{position:relative;min-height:100vh;min-height:100svh;background:#101010;color:#f1f1ea;display:flex;align-items:flex-end;overflow:hidden}
@@ -212,11 +213,77 @@ header img{opacity:0;animation:showLogo .1s 14.2s forwards}header.ready img{opac
   .pc{height:330px}
   .orbit{width:100%}
 }
+
+@media (max-width:767px){
+  header{
+    padding:10px 16px 12px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  header .brand{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .nav-shell{
+    position:relative;
+    width:100%;
+  }
+  .nav-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.04);
+    color:#f1f1ea;
+    cursor:pointer;
+    margin-left:auto;
+  }
+  .nav-toggle span,
+  .nav-toggle span:before,
+  .nav-toggle span:after{
+    display:block;
+    position:relative;
+    width:18px;
+    height:2px;
+    border-radius:2px;
+    background:#f1f1ea;
+    content:"";
+  }
+  .nav-toggle span:before{position:absolute;top:-6px;left:0;content:""}
+  .nav-toggle span:after{position:absolute;top:6px;left:0;content:""}
+  nav{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    gap:12px;
+    padding:14px 12px 10px;
+    background:rgba(18,18,18,.96);
+    border:1px solid var(--line);
+    border-radius:16px;
+    margin-top:8px;
+  }
+  nav.is-open{display:flex}
+  nav a{padding:6px 4px;opacity:1}
+}
+@media (min-width:768px){
+  .nav-toggle{display:none}
+}
 </style>
 <script>document.documentElement.className+=" js"</script></head><body id="top" class="intro">
 <div id="intro" role="presentation"><video id="iv" src="assets/intro-portal.mp4" muted playsinline preload="auto" aria-hidden="true"></video><div class="halo" id="ih"></div><img id="il" src="assets/logo.png" alt="" aria-hidden="true"><button id="skip" type="button" aria-label="Skip intro">Skip</button></div>
 <i id="sp"></i>
-<header><img src="assets/logo.png" alt="AntVisual Designs"><nav><a href="#pfs">Work</a><a href="#services">Services</a><a href="#ant">Ant?</a><a href="#contact">Contact</a></nav></header>
+<header>
+  <div class="brand"><img src="assets/logo.png" alt="AntVisual Designs"></div>
+  <div class="nav-shell">
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav>
+      <a href="#pfs">Work</a>
+      <a href="#services">Services</a>
+      <a href="#ant">Ant?</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <main>
 <div class="hero"><video id="hv" src="assets/hero.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
@@ -267,7 +334,7 @@ if(rm){endIntro()}else{iv.addEventListener('ended',function(){setTimeout(fly,550
 var rv=document.getElementById('rv'),rc=document.getElementById('rc'),rcs=[[0,'Design Principal Poster','254877089/Design-Principal-Poster-Design'],[2.2,'Product Poster','254876933/Product-Poster-Design'],[4.4,'Campaign Banner','254877355/Poster-Design']];
 var rci=-1;function setCap(i){if(i===rci)return;rci=i;var c=rcs[i];rc.querySelector('b').textContent=c[1];rc.querySelector('span').textContent=c[2]?'View on Behance':'See all work on Behance';rc.href=c[2]?'https://www.behance.net/gallery/'+c[2]:'https://www.behance.net/prathmeshmungi';rc.classList.remove('sw');void rc.offsetWidth;rc.classList.add('sw')}
 rv.addEventListener('timeupdate',function(){var t=rv.currentTime,i=0;for(var k=0;k<rcs.length;k++)if(t>=rcs[k][0])i=k;setCap(i)});
-if('IntersectionObserver' in window&&!rm){new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&pp.dataset.p!=='1')rv.play().catch(function(){});else rv.pause()})},{threshold:.35}) .observe(rv)}
+if('IntersectionObserver' in window&&!rm){new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting&&pp.dataset.p!=='1')rv.play().catch(function(){});else rv.pause()})},{threshold:.35}).observe(rv)}
 var _sp=setP;setP=function(p){_sp(p);if(p)rv.pause();else if(rv.getBoundingClientRect().bottom>0&&rv.getBoundingClientRect().top<innerHeight)rv.play().catch(function(){})};
 
 (function(){
@@ -286,4 +353,19 @@ function frame(){var m=document.documentElement.scrollHeight-innerHeight;sp.styl
 var tk=0;function onS(){if(tk)return;tk=1;requestAnimationFrame(function(){tk=0;frame()})}
 addEventListener('scroll',onS,{passive:true});addEventListener('resize',function(){sizePin();onS()});addEventListener('load',function(){sizePin();onS()});if(mq.addEventListener){mq.addEventListener('change',function(){sizePin();onS()})}else{mq.addListener(function(){sizePin();onS()})}}
 })();
+
+var navToggle = document.querySelector('.nav-toggle');
+var mainNav = document.querySelector('nav');
+if (navToggle && mainNav) {
+  navToggle.addEventListener('click', function () {
+    var isOpen = mainNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mainNav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mainNav.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 </script></body></html>
