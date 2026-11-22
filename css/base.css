@@ -1,0 +1,75 @@
+/* Layout concept: a print-studio proof sheet. Dark "press" bands (hero, capabilities) frame light
+   "paper" sections; crop marks and marching-ants selection lines are the recurring motif. */
+:root{
+  /* Brand palette carried over from antvisual.com */
+  --bg:#f4f4ef; --ink:#121212; --mute:#5d5d57; --lime:#cde66a; --line:#d9d9d0; --card:#fff;
+  --logo-filter:none;
+  /* Additions for the redesign */
+  --paper-2:#ebebe4;            /* alternate light band */
+  --night:#121212;              /* bands that stay dark in both themes */
+  --night-2:#1b1b1a;
+  --night-ink:#f1f1ea;
+  --night-mute:#9a9a90;
+  --night-line:#2e2e2b;
+  --on-lime:#121212;
+  --err:#b5402a;
+  --overlay:rgba(10,10,9,.62);
+  --shadow:0 30px 60px -30px rgba(18,18,18,.35);
+
+  --f-display:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;
+  --f-body:"DM Sans",system-ui,sans-serif;
+
+  --hh:58px;
+  --maxw:1320px;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101010; --ink:#f1f1ea; --mute:#a4a49a; --line:#2c2c2a; --card:#1a1a19; --logo-filter:invert(1);
+    --paper-2:#161615; --night:#0a0a0a; --night-2:#151514; --night-line:#262624;
+    --overlay:rgba(0,0,0,.7); --shadow:0 30px 60px -30px rgba(0,0,0,.8); --err:#e8846e; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101010; --ink:#f1f1ea; --mute:#a4a49a; --line:#2c2c2a; --card:#1a1a19; --logo-filter:invert(1);
+  --paper-2:#161615; --night:#0a0a0a; --night-2:#151514; --night-line:#262624;
+  --overlay:rgba(0,0,0,.7); --shadow:0 30px 60px -30px rgba(0,0,0,.8); --err:#e8846e; color-scheme:dark;
+}
+
+*,::before,::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--f-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+body.locked{overflow:hidden}
+a{color:inherit}
+img,video{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;line-height:1;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:2px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.shell{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+@media (min-width:700px){.shell{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+.eyebrow{font:500 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor}
+.night .eyebrow{color:var(--night-mute)}
+
+/* Buttons */
+.btn{--b:var(--lime);display:inline-flex;align-items:center;gap:12px;padding:14px 22px;border-radius:999px;background:var(--b);color:var(--on-lime);border:0;cursor:pointer;
+  font:500 16px/1 var(--f-body);text-decoration:none;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s var(--ease)}
+.btn::after{content:"";position:absolute;inset:0;background:var(--night-ink);transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1;border-radius:inherit}
+.btn:hover::after{transform:none}
+.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translate(3px,-3px)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn.ghost::after{background:var(--lime)}
+.btn.ghost:hover{color:var(--on-lime);box-shadow:inset 0 0 0 1.5px var(--lime)}
+
+/* Placeholder badges (toggle with CONFIG.showPlaceholderBadges) */
+.ph-tag{display:inline-flex;align-items:center;gap:6px;font:500 11px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 9px;border-radius:4px;border:1px dashed currentColor;opacity:.75}
+body.no-ph .ph-tag{display:none}

@@ -1,0 +1,30 @@
+/* ============ HERO ============ */
+.night{background:var(--night);color:var(--night-ink)}
+.hero{padding-top:calc(var(--hh) + env(safe-area-inset-top,0px) + clamp(36px,6vw,80px));position:relative;overflow:hidden}
+.hero>.shell{padding-bottom:clamp(64px,8vw,120px)}
+.hero-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,36px)}
+.hero-top .meta{font:500 13px/1.4 var(--f-body);color:var(--night-mute);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.hero h1{font-size:clamp(52px,11.2vw,184px);line-height:.88;letter-spacing:-.045em}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero-copy p{font-size:clamp(19px,1.7vw,24px);line-height:1.45;color:#cfcfc6;max-width:34ch}
+.hero-copy .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-copy .btn.ghost{color:var(--night-ink)}
+.frame{position:relative;padding:14px}
+.frame .cm{position:absolute;width:18px;height:18px;border-color:var(--night-mute);border-style:solid;border-width:0}
+.frame .cm.tl{top:0;left:0;border-top-width:1px;border-left-width:1px}
+.frame .cm.tr{top:0;right:0;border-top-width:1px;border-right-width:1px}
+.frame .cm.bl{bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}
+.frame .cm.br{bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
+.hero-video{position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:#ececea}
+.hero-video video{width:100%;height:100%;object-fit:cover}
+.frame figcaption{display:flex;justify-content:space-between;gap:12px;font:500 12px/1 var(--f-body);color:var(--night-mute);letter-spacing:.08em;text-transform:uppercase;margin-top:12px}
+.vid-toggle{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(18,18,18,.7);color:#f1f1ea;cursor:pointer;display:grid;place-items:center}
+@media (max-width:820px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Marquee of disciplines between hero and work */
+.ticker{border-top:1px solid var(--night-line);overflow:hidden;padding-block:18px;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:40px;animation:tick 48s linear infinite;font:700 clamp(18px,2vw,26px)/1 var(--f-display);color:var(--night-mute)}
+.ticker-track span{display:inline-flex;align-items:center;gap:40px}
+.ticker-track span::after{content:"";width:7px;height:7px;background:var(--lime);transform:rotate(45deg)}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}

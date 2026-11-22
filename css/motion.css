@@ -1,0 +1,8 @@
+/* Reveal helpers (only hidden once JS + GSAP are running) */
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,::before,::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .ticker-track{animation:none}
+  .orbit .spin{animation:none}
+}

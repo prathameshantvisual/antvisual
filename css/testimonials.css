@@ -1,0 +1,28 @@
+/* ============ TESTIMONIALS ============ */
+.tst{position:relative;overflow:hidden;transition:background-color 1s var(--ease)}
+.tst-stage{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,9fr);gap:clamp(20px,4vw,64px)}
+.tst-mark{font:800 clamp(120px,16vw,260px)/.7 var(--f-display);color:var(--lime);user-select:none;-webkit-text-stroke:0}
+.tst-slides{position:relative;min-height:380px}
+.tst-slide{position:absolute;inset:0;display:flex;flex-direction:column;gap:32px;visibility:hidden}
+.tst-slide.on{position:relative;visibility:visible}
+.tst-slide blockquote{margin:0;font:700 clamp(28px,3.6vw,54px)/1.08 var(--f-display);letter-spacing:-.025em;max-width:24ch;text-wrap:balance}
+.tst-slide blockquote .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.tst-slide blockquote .w>span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease)}
+.tst-slide.on blockquote .w>span{transform:none}
+.tst-who{display:flex;align-items:center;gap:16px;opacity:0;transform:translateY(10px);transition:opacity .6s .35s,transform .6s .35s var(--ease)}
+.tst-slide.on .tst-who{opacity:1;transform:none}
+.tst-av{width:56px;height:56px;border-radius:50%;border:1.5px dashed var(--mute);display:grid;place-items:center;font:500 11px/1 var(--f-body);color:var(--mute);letter-spacing:.06em;flex:0 0 auto;overflow:hidden}
+.tst-av img{width:100%;height:100%;object-fit:cover}
+.tst-who b{display:block;font-weight:500}
+.tst-who span{color:var(--mute);font-size:15px}
+.tst-ctrl{display:flex;align-items:center;gap:20px;margin-top:clamp(36px,5vw,64px);flex-wrap:wrap}
+.tst-dots{display:flex;gap:10px;flex:1;min-width:200px}
+.tst-dots button{flex:1;height:28px;background:none;border:0;cursor:pointer;position:relative;padding:0;max-width:140px}
+.tst-dots button::before,.tst-dots button i{content:"";position:absolute;left:0;right:0;top:13px;height:2px;background:var(--line)}
+.tst-dots button i{background:var(--ink);transform:scaleX(0);transform-origin:left}
+.tst-dots button.done i{transform:scaleX(1)}
+.tst-dots button.on i{animation:fill var(--dur,7s) linear forwards}
+.tst.paused .tst-dots button.on i{animation-play-state:paused}
+@keyframes fill{to{transform:scaleX(1)}}
+.tst-count{font:500 13px/1 var(--f-body);font-variant-numeric:tabular-nums;color:var(--mute);letter-spacing:.08em}
+@media (max-width:760px){.tst-stage{grid-template-columns:1fr}.tst-mark{font-size:120px;height:.5em}.tst-slides{min-height:440px}}

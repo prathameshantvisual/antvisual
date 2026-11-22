@@ -1,0 +1,52 @@
+/* ============ SELECTED WORK — expanding card rail ============ */
+.work{padding-block:clamp(64px,8vw,120px)}
+.work .sec-head{margin-bottom:clamp(28px,4vw,48px)}
+.work-rail{display:flex;gap:10px;height:clamp(340px,52vh,480px)}
+.wcard{flex:1 1 0;min-width:0;position:relative;border-radius:20px;overflow:hidden;background:var(--plate);isolation:isolate;
+  transition:flex-grow .9s var(--ease),box-shadow .6s var(--ease)}
+.wcard.on{flex-grow:5.4;box-shadow:0 24px 50px -28px rgba(0,0,0,.55)}
+.wcard-btn{position:absolute;inset:0;width:100%;border:0;padding:0;background:none;color:#f4f4ef;text-align:left;cursor:pointer;font:inherit;border-radius:inherit}
+.wcard-btn:focus-visible{outline:2px solid var(--lime);outline-offset:-4px}
+.wcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);filter:saturate(.35) brightness(.62);
+  transition:transform 1.2s var(--ease),filter .9s var(--ease)}
+.wcard.on img{transform:scale(1.02);filter:none}
+.wcard.on:hover img{transform:scale(1.06)}
+.wcard-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,transparent 26%,transparent 38%,rgba(10,10,10,.78) 66%,rgba(10,10,10,.92) 100%)}
+.wcard-num{position:absolute;top:14px;left:14px;font:500 12px/1 var(--f-body);letter-spacing:.08em;font-variant-numeric:tabular-nums;
+  padding:7px 10px;border-radius:999px;background:rgba(10,10,10,.55);color:#f4f4ef;transition:background .5s,color .5s}
+.wcard.on .wcard-num{background:var(--lime);color:#121212}
+.wcard-vert{position:absolute;left:50%;bottom:20px;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;white-space:nowrap;
+  font:700 clamp(15px,1.3vw,19px)/1 var(--f-display);letter-spacing:-.01em;transition:opacity .4s,transform .6s var(--ease)}
+.wcard.on .wcard-vert{opacity:0;transform:translateX(-50%) rotate(180deg) translateY(-16px)}
+.wcard-info{position:absolute;left:0;right:0;bottom:0;padding:clamp(18px,2vw,28px);display:grid;gap:8px;justify-items:start;max-width:560px;pointer-events:none}
+.wcard-info>*{opacity:0;transform:translateY(18px);transition:opacity .35s,transform .35s var(--ease)}
+.wcard.on .wcard-info>*{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .8s var(--ease)}
+.wcard.on .wcard-info>:nth-child(1){transition-delay:.25s}.wcard.on .wcard-info>:nth-child(2){transition-delay:.32s}
+.wcard.on .wcard-info>:nth-child(3){transition-delay:.39s}.wcard.on .wcard-info>:nth-child(4){transition-delay:.46s}
+.wcard-cat{font:500 12px/1.3 var(--f-body);letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.wcard-title{font:800 clamp(28px,3vw,46px)/.95 var(--f-display);letter-spacing:-.035em}
+.wcard-sum{font-size:15px;line-height:1.45;color:#dcdcd3;max-width:42ch}
+.wcard-cta{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:9px 14px;border-radius:999px;background:var(--lime);color:#121212;font:500 14px/1 var(--f-body)}
+.wcard-cta svg{width:15px;height:15px;transition:transform .35s var(--ease)}
+.wcard-btn:hover .wcard-cta svg{transform:translate(2px,-2px)}
+.wcard-bar{position:absolute;left:clamp(18px,2vw,28px);right:clamp(18px,2vw,28px);top:16px;height:2px;margin-left:44px;background:rgba(244,244,239,.25);border-radius:2px;overflow:hidden;opacity:0;transition:opacity .4s}
+.wcard-bar i{position:absolute;inset:0;background:var(--lime);transform-origin:left;transform:scaleX(0)}
+.wcard.run .wcard-bar{opacity:1}
+.wcard.run .wcard-bar i{animation:wfill 5s linear forwards}
+@keyframes wfill{to{transform:scaleX(1)}}
+.work-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:22px}
+.work-count{font:500 13px/1.4 var(--f-body);letter-spacing:.06em;color:var(--mute)}
+.hint-touch{display:none}
+@media (max-width:760px),(hover:none){.hint-desk{display:none}.hint-touch{display:inline}}
+@media (max-width:1024px){.wcard.on{flex-grow:4}.work-rail{gap:8px}}
+/* Phones: swipeable cards, every card open */
+@media (max-width:760px){
+  .work-rail{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));
+    padding-inline:var(--gutter) var(--gutter-r);scroll-padding-inline:var(--gutter)}
+  .work-rail::-webkit-scrollbar{display:none}
+  .wcard{flex:0 0 82%;height:420px;scroll-snap-align:start}
+  .wcard img{transform:none;filter:none}
+  .wcard-vert{display:none}
+  .wcard-info>*{opacity:1;transform:none}
+  .wcard-num{background:var(--lime);color:#121212}
+}

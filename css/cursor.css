@@ -1,0 +1,8 @@
+/* Custom cursor (fine pointers only) */
+.cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--lime);
+  mix-blend-mode:normal;display:grid;place-items:center;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),opacity .3s;opacity:0}
+.cursor span{font:500 13px/1 var(--f-body);color:#121212;opacity:0;transition:opacity .25s;white-space:nowrap}
+.cursor.on{opacity:1}
+.cursor.big{width:92px;height:92px;margin:-46px 0 0 -46px}
+.cursor.big span{opacity:1}
+@media (hover:none),(pointer:coarse){.cursor{display:none}}
